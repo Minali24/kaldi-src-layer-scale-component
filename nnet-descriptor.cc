@@ -533,6 +533,7 @@ int32 Descriptor::Dim(const Nnet &nnet) const {
   int32 dim = 0;
   for (int32 part = 0; part < num_parts; part++)
     dim += parts_[part]->Dim(nnet);
+  KALDI_LOG << "dim from nnet-desc = " << dim;
   KALDI_ASSERT(dim > 0);
   return dim;
 }

@@ -1,0 +1,1149 @@
+Binary file nnet-simple-component.o matches
+nnet-attention-component.cc:         << ", key-dim=" << key_dim_
+nnet-attention-component.cc:         << ", value-dim=" << value_dim_
+nnet-attention-component.cc:         << ", context-dim=" << context_dim_
+nnet-attention-component.cc:    key_dim_(other.key_dim_),
+nnet-attention-component.cc:    value_dim_(other.value_dim_),
+nnet-attention-component.cc:    context_dim_(other.context_dim_),
+nnet-attention-component.cc:  key_dim_ = -1;
+nnet-attention-component.cc:  value_dim_ = -1;
+nnet-attention-component.cc:  bool ok = cfl->GetValue("key-dim", &key_dim_) &&
+nnet-attention-component.cc:      cfl->GetValue("value-dim", &value_dim_) &&
+nnet-attention-component.cc:  if (key_scale_ < 0.0) key_scale_ = 1.0 / sqrt(key_dim_);
+nnet-attention-component.cc:  if (num_heads_ <= 0 || key_dim_ <= 0 || value_dim_ <= 0 ||
+nnet-attention-component.cc:  context_dim_ = num_left_inputs_ + 1 + num_right_inputs_;
+nnet-attention-component.cc:  memo->c.Resize(out->NumRows(), context_dim_ * num_heads_);
+nnet-attention-component.cc:  int32 query_dim = key_dim_ + context_dim_;
+nnet-attention-component.cc:  int32 input_dim_per_head = key_dim_ + value_dim_ + query_dim,
+nnet-attention-component.cc:      output_dim_per_head = value_dim_ + (output_context_ ? context_dim_ : 0);
+nnet-attention-component.cc:                                   h * input_dim_per_head, input_dim_per_head),
+nnet-attention-component.cc:               h * context_dim_, context_dim_),
+nnet-attention-component.cc:                 h * output_dim_per_head, output_dim_per_head);
+nnet-attention-component.cc:  int32 query_dim = key_dim_ + context_dim_,
+nnet-attention-component.cc:      full_value_dim = value_dim_ + (output_context_ ? context_dim_ : 0);
+nnet-attention-component.cc:               in.NumCols() == (key_dim_ + value_dim_ + query_dim) &&
+nnet-attention-component.cc:                                 key_dim_ + value_dim_, query_dim);
+nnet-attention-component.cc:  CuSubMatrix<BaseFloat> keys(in, 0, in.NumRows(), 0, key_dim_);
+nnet-attention-component.cc:  CuSubMatrix<BaseFloat> values(in, 0, in.NumRows(), key_dim_, value_dim_);
+nnet-attention-component.cc:    posterior_stats_.Resize(num_heads_, context_dim_);
+nnet-attention-component.cc:    CuVector<BaseFloat> c_sum(num_heads_ * context_dim_);
+nnet-attention-component.cc:                                        context_dim_, context_dim_);
+nnet-attention-component.cc:    KALDI_ASSERT(c.NumCols() == num_heads_ * context_dim_);
+nnet-attention-component.cc:    CuVector<BaseFloat> dot_prod(num_heads_ * context_dim_);
+nnet-attention-component.cc:    // size 'context_dim_'; that gives us the entropy contribution
+nnet-attention-component.cc:                                       context_dim_, context_dim_);
+nnet-attention-component.cc:  KALDI_ASSERT(num_heads_ > 0 && key_dim_ > 0 && value_dim_ > 0 &&
+nnet-attention-component.cc:               context_dim_ == (num_left_inputs_ + 1 + num_right_inputs_) &&
+nnet-attention-component.cc:  int32 query_dim = key_dim_ + context_dim_,
+nnet-attention-component.cc:      input_dim_per_head = key_dim_ + value_dim_ + query_dim,
+nnet-attention-component.cc:      output_dim_per_head = value_dim_ + (output_context_ ? context_dim_ : 0);
+nnet-attention-component.cc:                      h * input_dim_per_head, input_dim_per_head),
+nnet-attention-component.cc:               h * context_dim_, context_dim_),
+nnet-attention-component.cc:                       h * output_dim_per_head, output_dim_per_head),
+nnet-attention-component.cc:                      h * input_dim_per_head, input_dim_per_head);
+nnet-attention-component.cc:  int32 query_dim = key_dim_ + context_dim_,
+nnet-attention-component.cc:      full_value_dim = value_dim_ + (output_context_ ? context_dim_ : 0);
+nnet-attention-component.cc:               in_value.NumCols() == (key_dim_ + value_dim_ + query_dim) &&
+nnet-attention-component.cc:               c.NumCols() == context_dim_);
+nnet-attention-component.cc:                                 key_dim_ + value_dim_, query_dim),
+nnet-attention-component.cc:                    key_dim_ + value_dim_, query_dim),
+nnet-attention-component.cc:      keys(in_value, 0, in_value.NumRows(), 0, key_dim_),
+nnet-attention-component.cc:      keys_deriv(*in_deriv,  0, in_value.NumRows(), 0, key_dim_),
+nnet-attention-component.cc:      values(in_value, 0, in_value.NumRows(), key_dim_, value_dim_),
+nnet-attention-component.cc:      values_deriv(*in_deriv, 0, in_value.NumRows(), key_dim_, value_dim_);
+nnet-attention-component.cc:  WriteBasicType(os, binary, key_dim_);
+nnet-attention-component.cc:  WriteBasicType(os, binary, value_dim_);
+nnet-attention-component.cc:  ReadBasicType(is, binary, &key_dim_);
+nnet-attention-component.cc:  ReadBasicType(is, binary, &value_dim_);
+nnet-attention-component.cc:  context_dim_ = num_left_inputs_ + 1 + num_right_inputs_;
+nnet-attention-component.cc:  desired_indexes->resize(context_dim_);
+nnet-attention-component.cc:  KALDI_ASSERT(i == context_dim_);
+nnet-attention-component.cc:    used_inputs->reserve(context_dim_);
+Binary file nnet-tdnn-component.o matches
+nnet-general-component.cc:  int32 num_blocks = input_dim_ / output_dim_;
+nnet-general-component.cc:  int32 num_blocks = input_dim_ / output_dim_,
+nnet-general-component.cc:      block_size = input_dim_ / num_blocks;
+nnet-general-component.cc:               in.NumCols() == input_dim_ && out->NumCols() == output_dim_);
+nnet-general-component.cc:  int32 num_blocks = input_dim_ / output_dim_,
+nnet-general-component.cc:  input_dim_ = input_dim;
+nnet-general-component.cc:  output_dim_ = output_dim;
+nnet-general-component.cc:  WriteBasicType(os, binary, input_dim_);
+nnet-general-component.cc:  WriteBasicType(os, binary, output_dim_);
+nnet-general-component.cc:  ReadBasicType(is, binary, &input_dim_);
+nnet-general-component.cc:  ReadBasicType(is, binary, &output_dim_);
+nnet-general-component.cc:    input_dim_(-1), input_period_(1), output_period_(1),
+nnet-general-component.cc:    input_dim_(other.input_dim_),
+nnet-general-component.cc:  bool ok = cfl->GetValue("input-dim", &input_dim_);
+nnet-general-component.cc:  if (!ok || input_dim_ <= 0 || input_period_ <= 0 || output_period_ <= 0 ||
+nnet-general-component.cc:  if (!(input_dim_ > 0 && input_period_ > 0 && output_period_ > 0 &&
+nnet-general-component.cc:               in.NumCols() == input_dim_ &&
+nnet-general-component.cc:  out->ColRange(1, input_dim_).AddRowRanges(in, indexes->forward_indexes);
+nnet-general-component.cc:    out->ColRange(input_dim_ + 1,
+nnet-general-component.cc:                  input_dim_).AddRowRanges(in_squared,
+nnet-general-component.cc:  in_deriv->AddRows(1.0, out_deriv.ColRange(1, input_dim_),
+nnet-general-component.cc:    variance_deriv.CopyRows(out_deriv.ColRange(1 + input_dim_, input_dim_),
+nnet-general-component.cc:  ReadBasicType(is, binary, &input_dim_);
+nnet-general-component.cc:  WriteBasicType(os, binary, input_dim_);
+nnet-general-component.cc:  bool ok = cfl->GetValue("input-dim", &input_dim_);
+nnet-general-component.cc:  if (!ok || input_dim_ <= 0 || left_context_ + right_context_ <= 0 ||
+nnet-general-component.cc:    input_dim_(-1), input_period_(1), left_context_(-1), right_context_(-1),
+nnet-general-component.cc:    input_dim_(other.input_dim_), input_period_(other.input_period_),
+nnet-general-component.cc:  KALDI_ASSERT(input_dim_ > 0);
+nnet-general-component.cc:  KALDI_ASSERT(!output_stddevs_ || (input_dim_ - 1) % 2 == 0);
+nnet-general-component.cc:  ReadBasicType(is, binary, &input_dim_);
+nnet-general-component.cc:  WriteBasicType(os, binary, input_dim_);
+nnet-general-component.cc:               in.NumCols() == input_dim_ &&
+nnet-general-component.cc:                                       num_log_count_features_, input_dim_ - 1);
+nnet-general-component.cc:  out_non_count.AddRowRanges(in.ColRange(1, input_dim_ - 1),
+nnet-general-component.cc:    KALDI_ASSERT((input_dim_ - 1) % 2 == 0);
+nnet-general-component.cc:    int32 feature_dim = (input_dim_ - 1) / 2;
+nnet-general-component.cc:    int32 feature_dim = (input_dim_ - 1) / 2;
+nnet-general-component.cc:  in_deriv->ColRange(1, input_dim_ - 1).
+nnet-general-component.cc:      AddRowRanges(out_deriv.ColRange(num_log_count_features_, input_dim_ - 1),
+nnet-general-component.cc:  ReadBasicType(is, binary, &dim_);
+nnet-general-component.cc:  WriteBasicType(os, binary, dim_);
+nnet-general-component.cc:  stream << Type() << ", dim=" << dim_
+nnet-general-component.cc:  dim_ = dim;
+nnet-general-component.cc:  ans->dim_ = dim_;
+nnet-general-component.cc:         << ", output-dim=" << output_dim_
+nnet-general-component.cc:    output_dim_(-1), dropout_proportion_(0.5), continuous_(false) { }
+nnet-general-component.cc:    output_dim_(other.output_dim_),
+nnet-general-component.cc:  KALDI_ASSERT(in.NumRows() == 0 && out->NumCols() == output_dim_);
+nnet-general-component.cc:  ReadBasicType(is, binary, &output_dim_);
+nnet-general-component.cc:  WriteBasicType(os, binary, output_dim_);
+nnet-general-component.cc:  output_dim_ = 0;
+nnet-general-component.cc:  bool ok = cfl->GetValue("output-dim", &output_dim_);
+nnet-general-component.cc:  KALDI_ASSERT(ok && output_dim_ > 0);
+nnet-general-component.cc:         << ", dim=" << dim_
+nnet-general-component.cc:         << ", block-dim=" << block_dim_
+nnet-general-component.cc:    dim_(-1), block_dim_(-1), time_period_(0),
+nnet-general-component.cc:    dim_(other.dim_),
+nnet-general-component.cc:    block_dim_(other.block_dim_),
+nnet-general-component.cc:  if (block_dim_ < dim_) {
+nnet-general-component.cc:        dim_multiple = dim_  / block_dim_,
+nnet-general-component.cc:        num_rows_reshaped = num_rows * dim_multiple;
+nnet-general-component.cc:                                        block_dim_, block_dim_);
+nnet-general-component.cc:  if (block_dim_ < dim_) {
+nnet-general-component.cc:        dim_multiple = dim_  / block_dim_,
+nnet-general-component.cc:        num_rows_reshaped = num_rows * dim_multiple;
+nnet-general-component.cc:                                             block_dim_, block_dim_);
+nnet-general-component.cc:  ReadBasicType(is, binary, &dim_);
+nnet-general-component.cc:  ReadBasicType(is, binary, &block_dim_);
+nnet-general-component.cc:  WriteBasicType(os, binary, dim_);
+nnet-general-component.cc:  WriteBasicType(os, binary, block_dim_);
+nnet-general-component.cc:  dim_ = 0;
+nnet-general-component.cc:  bool ok = cfl->GetValue("dim", &dim_);
+nnet-general-component.cc:  KALDI_ASSERT(ok && dim_ > 0);
+nnet-general-component.cc:  block_dim_ = dim_;
+nnet-general-component.cc:  cfl->GetValue("block-dim", &block_dim_);
+nnet-general-component.cc:  if (!(block_dim_ > 0 && dim_ % block_dim_ == 0))
+nnet-general-component.cc:    KALDI_ERR << "Invalid configuration dim=" << dim_
+nnet-general-component.cc:              << ", block-dim=" << block_dim_;
+nnet-general-component.cc:  CuMatrix<BaseFloat> *ans = new CuMatrix<BaseFloat>(num_mask_rows, block_dim_);
+nnet-general-component.cc:  // *before considering effects related to when block_dim_ != dim_.
+nnet-general-component.cc:  int32 multiple = dim_ / block_dim_;
+Binary file nnet-computation-graph.o matches
+Binary file nnet-batch-compute.o matches
+Binary file nnet-compile.o matches
+Binary file nnet-am-decodable-simple.o matches
+Binary file nnet-computation.o matches
+nnet-diagnostics.cc:        if (config_.compute_per_dim_accuracy &&
+nnet-diagnostics.cc:                        config_.compute_per_dim_accuracy ?
+nnet-diagnostics.cc:                        config_.compute_per_dim_accuracy ?
+nnet-combined-component.h:  int32 input_x_dim_;   // size of the input along x-axis
+nnet-combined-component.h:  int32 input_y_dim_;   // size of input along y-axis
+nnet-combined-component.h:  int32 input_z_dim_;   // size of input along z-axis
+nnet-combined-component.h:  int32 filt_x_dim_;    // size of the filter along x-axis
+nnet-combined-component.h:  int32 filt_y_dim_;    // size of the filter along y-axis
+nnet-combined-component.h:  // there is no filt_z_dim_ as it is always assumed to be
+nnet-combined-component.h:  // the same as input_z_dim_
+nnet-combined-component.h:  // divide by (count_ times cell_dim_).
+nnet-combined-component.h:  MaxpoolingComponent(): input_x_dim_(0), input_y_dim_(0), input_z_dim_(0),
+nnet-combined-component.h:  int32 input_x_dim_;   // size of the input along x-axis
+nnet-combined-component.h:  int32 input_y_dim_;   // size of input along y-axis
+nnet-combined-component.h:  int32 input_z_dim_;   // size of input along z-axis
+nnet-combined-component.h:  int32 cell_dim_;  // cell dimension, e.g. 1024.
+nnet-combined-component.h:  int32 recurrent_dim_;  // recurrent dimension, e.g. 256 for projected GRU;
+nnet-combined-component.h:  // The matrix W^h, of dimension cell_dim_ by recurrent_dim_.
+nnet-combined-component.h:  // Of dimension cell_dim_, this is comparable to the value_sum_ vector in
+nnet-combined-component.h:  // Of dimension cell_dim_, this is comparable to the deriv_sum_ vector in
+nnet-combined-component.h:  // recurrent_dim_ if use-natural-gradient was true, else not set up).
+nnet-combined-component.h:  // recurrent_dim_ if use-natural-gradient was true, else not set up).
+nnet-combined-component.h:  int32 cell_dim_;  // cell dimension, e.g. 1024.
+nnet-combined-component.h:  // The matrix W^h, of dimension cell_dim_ by recurrent_dim_.
+nnet-combined-component.h:  // Of dimension cell_dim_, this is comparable to the value_sum_ vector in
+nnet-combined-component.h:  // Of dimension cell_dim_, this is comparable to the deriv_sum_ vector in
+nnet-normalize-component.h:        (block_dim_ != input_dim_ ? kInputContiguous|kOutputContiguous : 0);
+nnet-normalize-component.h:  virtual int32 InputDim() const { return input_dim_; }
+nnet-normalize-component.h:    return (input_dim_ + (add_log_stddev_ ? (input_dim_ / block_dim_) : 0));
+nnet-normalize-component.h:  int32 input_dim_;
+nnet-normalize-component.h:  int32 block_dim_;
+nnet-normalize-component.h:  virtual int32 InputDim() const { return dim_; }
+nnet-normalize-component.h:  virtual int32 OutputDim() const { return dim_; }
+nnet-normalize-component.h:        (block_dim_ < dim_ ? kInputContiguous|kOutputContiguous : 0)|
+nnet-normalize-component.h:    // 'sum_sumsq_scale' is of dimension 5 by block_dim_:
+nnet-normalize-component.h:  int32 dim_;
+nnet-normalize-component.h:  // This would normally be the same as dim_, but if it's less (and it must be >
+nnet-normalize-component.h:  // 0 and must divide dim_), then each separate block of the input of dimension
+nnet-normalize-component.h:  // 'block_dim_' is treated like a separate frame for the purposes of
+nnet-normalize-component.h:  int32 block_dim_;
+Binary file decodable-online-looped.o matches
+nnet-computation-graph.cc:  int32 dim_range_node = sub_phase[0].first;
+nnet-computation-graph.cc:  KALDI_ASSERT(nnet_.IsDimRangeNode(dim_range_node));
+nnet-computation-graph.cc:  const NetworkNode &node = nnet_.GetNode(dim_range_node);
+nnet-computation-graph.cc:    std::pair<int32, int32> p(source_step_index, dim_range_node);
+nnet-computation-graph.cc:    if (dim_range_nodes_.count(p) > 0) {
+nnet-computation-graph.cc:    dim_range_nodes_.insert(p);
+nnet-computation-graph.cc:      iter->first = dim_range_node;
+Binary file nnet-attention-component.o matches
+Binary file nnet-parse.o matches
+nnet-combined-component.cc:    input_x_dim_(0), input_y_dim_(0), input_z_dim_(0),
+nnet-combined-component.cc:    filt_x_dim_(0), filt_y_dim_(0),
+nnet-combined-component.cc:    input_x_dim_(component.input_x_dim_),
+nnet-combined-component.cc:    input_y_dim_(component.input_y_dim_),
+nnet-combined-component.cc:    input_z_dim_(component.input_z_dim_),
+nnet-combined-component.cc:    filt_x_dim_(component.filt_x_dim_),
+nnet-combined-component.cc:    filt_y_dim_(component.filt_y_dim_),
+nnet-combined-component.cc:    input_x_dim_(input_x_dim),
+nnet-combined-component.cc:    input_y_dim_(input_y_dim),
+nnet-combined-component.cc:    input_z_dim_(input_z_dim),
+nnet-combined-component.cc:    filt_x_dim_(filt_x_dim),
+nnet-combined-component.cc:    filt_y_dim_(filt_y_dim),
+nnet-combined-component.cc:  return input_x_dim_ * input_y_dim_ * input_z_dim_;
+nnet-combined-component.cc:  int32 num_x_steps = (1 + (input_x_dim_ - filt_x_dim_) / filt_x_step_);
+nnet-combined-component.cc:  int32 num_y_steps = (1 + (input_y_dim_ - filt_y_dim_) / filt_y_step_);
+nnet-combined-component.cc:  input_x_dim_ = input_x_dim;
+nnet-combined-component.cc:  input_y_dim_ = input_y_dim;
+nnet-combined-component.cc:  input_z_dim_ = input_z_dim;
+nnet-combined-component.cc:  filt_x_dim_ = filt_x_dim;
+nnet-combined-component.cc:  filt_y_dim_ = filt_y_dim;
+nnet-combined-component.cc:  KALDI_ASSERT((input_x_dim_ - filt_x_dim_) % filt_x_step_ == 0);
+nnet-combined-component.cc:  KALDI_ASSERT((input_y_dim_ - filt_y_dim_) % filt_y_step_ == 0);
+nnet-combined-component.cc:  int32 filter_dim = filt_x_dim_ * filt_y_dim_ * input_z_dim_;
+nnet-combined-component.cc:  input_x_dim_ = input_x_dim;
+nnet-combined-component.cc:  input_y_dim_ = input_y_dim;
+nnet-combined-component.cc:  input_z_dim_ = input_z_dim;
+nnet-combined-component.cc:  filt_x_dim_ = filt_x_dim;
+nnet-combined-component.cc:  filt_y_dim_ = filt_y_dim;
+nnet-combined-component.cc:  int32 filter_dim = (filt_x_dim_ * filt_y_dim_ * input_z_dim_);
+nnet-combined-component.cc:         << ", input-x-dim=" << input_x_dim_
+nnet-combined-component.cc:         << ", input-y-dim=" << input_y_dim_
+nnet-combined-component.cc:         << ", input-z-dim=" << input_z_dim_
+nnet-combined-component.cc:         << ", filt-x-dim=" << filt_x_dim_
+nnet-combined-component.cc:         << ", filt-y-dim=" << filt_y_dim_
+nnet-combined-component.cc:  int32 num_x_steps = (1 + (input_x_dim_ - filt_x_dim_) / filt_x_step_);
+nnet-combined-component.cc:  int32 num_y_steps = (1 + (input_y_dim_ - filt_y_dim_) / filt_y_step_);
+nnet-combined-component.cc:              filt_x_dim = filt_x_dim_,
+nnet-combined-component.cc:              filt_y_dim = filt_y_dim_,
+nnet-combined-component.cc:              input_x_dim = input_x_dim_,
+nnet-combined-component.cc:              input_y_dim = input_y_dim_,
+nnet-combined-component.cc:              input_z_dim = input_z_dim_,
+nnet-combined-component.cc:  const int32 num_x_steps = (1 + (input_x_dim_ - filt_x_dim_) / filt_x_step_),
+nnet-combined-component.cc:              num_y_steps = (1 + (input_y_dim_ - filt_y_dim_) / filt_y_step_),
+nnet-combined-component.cc:  const int32 num_x_steps = (1 + (input_x_dim_ - filt_x_dim_) / filt_x_step_),
+nnet-combined-component.cc:              num_y_steps = (1 + (input_y_dim_ - filt_y_dim_) / filt_y_step_),
+nnet-combined-component.cc:              filt_x_dim = filt_x_dim_,
+nnet-combined-component.cc:              filt_y_dim = filt_y_dim_,
+nnet-combined-component.cc:              input_x_dim = input_x_dim_,
+nnet-combined-component.cc:              input_y_dim = input_y_dim_,
+nnet-combined-component.cc:              input_z_dim = input_z_dim_,
+nnet-combined-component.cc:  const int32 num_x_steps = (1 + (input_x_dim_ - filt_x_dim_) / filt_x_step_),
+nnet-combined-component.cc:              num_y_steps = (1 + (input_y_dim_ - filt_y_dim_) / filt_y_step_),
+nnet-combined-component.cc:  const int32 num_x_steps = (1 + (input_x_dim_ - filt_x_dim_) / filt_x_step_),
+nnet-combined-component.cc:              num_y_steps = (1 + (input_y_dim_ - filt_y_dim_) / filt_y_step_),
+nnet-combined-component.cc:  ReadBasicType(is, binary, &input_x_dim_);
+nnet-combined-component.cc:  ReadBasicType(is, binary, &input_y_dim_);
+nnet-combined-component.cc:  ReadBasicType(is, binary, &input_z_dim_);
+nnet-combined-component.cc:  ReadBasicType(is, binary, &filt_x_dim_);
+nnet-combined-component.cc:  ReadBasicType(is, binary, &filt_y_dim_);
+nnet-combined-component.cc:  WriteBasicType(os, binary, input_x_dim_);
+nnet-combined-component.cc:  WriteBasicType(os, binary, input_y_dim_);
+nnet-combined-component.cc:  WriteBasicType(os, binary, input_z_dim_);
+nnet-combined-component.cc:  WriteBasicType(os, binary, filt_x_dim_);
+nnet-combined-component.cc:  WriteBasicType(os, binary, filt_y_dim_);
+nnet-combined-component.cc:  return input_x_dim_ * input_y_dim_ * input_z_dim_;
+nnet-combined-component.cc:    input_x_dim_(component.input_x_dim_),
+nnet-combined-component.cc:    input_y_dim_(component.input_y_dim_),
+nnet-combined-component.cc:    input_z_dim_(component.input_z_dim_),
+nnet-combined-component.cc:  int32 num_pools_x = 1 + (input_x_dim_ - pool_x_size_) / pool_x_step_;
+nnet-combined-component.cc:  int32 num_pools_y = 1 + (input_y_dim_ - pool_y_size_) / pool_y_step_;
+nnet-combined-component.cc:  int32 num_pools_z = 1 + (input_z_dim_ - pool_z_size_) / pool_z_step_;
+nnet-combined-component.cc:  KALDI_ASSERT(input_x_dim_ > 0);
+nnet-combined-component.cc:  KALDI_ASSERT(input_y_dim_ > 0);
+nnet-combined-component.cc:  KALDI_ASSERT(input_z_dim_ > 0);
+nnet-combined-component.cc:  KALDI_ASSERT(input_x_dim_ >= pool_x_size_);
+nnet-combined-component.cc:  KALDI_ASSERT(input_y_dim_ >= pool_y_size_);
+nnet-combined-component.cc:  KALDI_ASSERT(input_z_dim_ >= pool_z_size_);
+nnet-combined-component.cc:  KALDI_ASSERT((input_x_dim_ - pool_x_size_) % pool_x_step_  == 0);
+nnet-combined-component.cc:  KALDI_ASSERT((input_y_dim_ - pool_y_size_) % pool_y_step_  == 0);
+nnet-combined-component.cc:  KALDI_ASSERT((input_z_dim_ - pool_z_size_) % pool_z_step_  == 0);
+nnet-combined-component.cc:  ok = ok && cfl->GetValue("input-x-dim", &input_x_dim_);
+nnet-combined-component.cc:  ok = ok && cfl->GetValue("input-y-dim", &input_y_dim_);
+nnet-combined-component.cc:  ok = ok && cfl->GetValue("input-z-dim", &input_z_dim_);
+nnet-combined-component.cc:  int32 num_pools_x = 1 + (input_x_dim_ - pool_x_size_) / pool_x_step_;
+nnet-combined-component.cc:  int32 num_pools_y = 1 + (input_y_dim_ - pool_y_size_) / pool_y_step_;
+nnet-combined-component.cc:  int32 num_pools_z = 1 + (input_z_dim_ - pool_z_size_) / pool_z_step_;
+nnet-combined-component.cc:              column_map[index] = (x_pool * pool_x_step_ + x) * input_y_dim_ * input_z_dim_ +
+nnet-combined-component.cc:                                  (y_pool * pool_y_step_ + y) * input_z_dim_ +
+nnet-combined-component.cc:  int32 num_pools_x = 1 + (input_x_dim_ - pool_x_size_) / pool_x_step_;
+nnet-combined-component.cc:  int32 num_pools_y = 1 + (input_y_dim_ - pool_y_size_) / pool_y_step_;
+nnet-combined-component.cc:  int32 num_pools_z = 1 + (input_z_dim_ - pool_z_size_) / pool_z_step_;
+nnet-combined-component.cc:              int32 vector_index = (x_pool * pool_x_step_ + x) * input_y_dim_ * input_z_dim_ +
+nnet-combined-component.cc:                                  (y_pool * pool_y_step_ + y) * input_z_dim_ +
+nnet-combined-component.cc:  ReadBasicType(is, binary, &input_x_dim_);
+nnet-combined-component.cc:  ReadBasicType(is, binary, &input_y_dim_);
+nnet-combined-component.cc:  ReadBasicType(is, binary, &input_z_dim_);
+nnet-combined-component.cc:  WriteBasicType(os, binary, input_x_dim_);
+nnet-combined-component.cc:  WriteBasicType(os, binary, input_y_dim_);
+nnet-combined-component.cc:  WriteBasicType(os, binary, input_z_dim_);
+nnet-combined-component.cc:         << ", input-x-dim=" << input_x_dim_
+nnet-combined-component.cc:         << ", input-y-dim=" << input_y_dim_
+nnet-combined-component.cc:         << ", input-z-dim=" << input_z_dim_
+nnet-combined-component.cc:  if (recurrent_dim_ == cell_dim_) {
+nnet-combined-component.cc:    return 4 * cell_dim_;
+nnet-combined-component.cc:    return 3 * cell_dim_ + 2 * recurrent_dim_;
+nnet-combined-component.cc:  return 2 * cell_dim_;
+nnet-combined-component.cc:         << ", cell-dim=" << cell_dim_
+nnet-combined-component.cc:         << ", recurrent-dim=" << recurrent_dim_;
+nnet-combined-component.cc:           << (self_repair_total_ / (count_ * cell_dim_));
+nnet-combined-component.cc:  cell_dim_ = -1;
+nnet-combined-component.cc:  recurrent_dim_ = -1;
+nnet-combined-component.cc:  if (!cfl->GetValue("cell-dim", &cell_dim_) || cell_dim_ <= 0)
+nnet-combined-component.cc:  BaseFloat param_stddev = 1.0 / std::sqrt(cell_dim_),
+nnet-combined-component.cc:  cfl->GetValue("recurrent-dim", &recurrent_dim_);
+nnet-combined-component.cc:  if (recurrent_dim_ < 0)
+nnet-combined-component.cc:    recurrent_dim_ = cell_dim_;
+nnet-combined-component.cc:  if (recurrent_dim_ == 0 || recurrent_dim_ > cell_dim_)
+nnet-combined-component.cc:  w_h_.Resize(cell_dim_, recurrent_dim_);
+nnet-combined-component.cc:  value_sum_.Resize(cell_dim_);
+nnet-combined-component.cc:  deriv_sum_.Resize(cell_dim_);
+nnet-combined-component.cc:  // If recurrent_dim_ != cell_dim_, this is projected GRU and we
+nnet-combined-component.cc:      c = cell_dim_,
+nnet-combined-component.cc:      r =  recurrent_dim_;
+nnet-combined-component.cc:  // By setting s_t1 to the last recurrent_dim_ rows of 'in', we get something
+nnet-combined-component.cc:      c = cell_dim_,
+nnet-combined-component.cc:      r = recurrent_dim_;
+nnet-combined-component.cc:  CuVector<BaseFloat> temp(cell_dim_);
+nnet-combined-component.cc:  CuMatrix<BaseFloat> thresholds(1, cell_dim_);
+nnet-combined-component.cc:  ReadBasicType(is, binary, &cell_dim_);
+nnet-combined-component.cc:  ReadBasicType(is, binary, &recurrent_dim_);
+nnet-combined-component.cc:  WriteBasicType(os, binary, cell_dim_);
+nnet-combined-component.cc:  WriteBasicType(os, binary, recurrent_dim_);
+nnet-combined-component.cc:  KALDI_ASSERT(cell_dim_ > 0 && recurrent_dim_ > 0 &&
+nnet-combined-component.cc:               recurrent_dim_ <= cell_dim_ &&
+nnet-combined-component.cc:  KALDI_ASSERT(w_h_.NumRows() == cell_dim_ &&
+nnet-combined-component.cc:               w_h_.NumCols() == recurrent_dim_);
+nnet-combined-component.cc:  KALDI_ASSERT(value_sum_.Dim() == cell_dim_ &&
+nnet-combined-component.cc:               deriv_sum_.Dim() == cell_dim_);
+nnet-combined-component.cc:    cell_dim_(other.cell_dim_),
+nnet-combined-component.cc:    recurrent_dim_(other.recurrent_dim_),
+nnet-combined-component.cc:  return 3 * cell_dim_;
+nnet-combined-component.cc:  return 2 * cell_dim_;
+nnet-combined-component.cc:         << ", cell-dim=" << cell_dim_;
+nnet-combined-component.cc:           << (self_repair_total_ / (count_ * cell_dim_));
+nnet-combined-component.cc:  cell_dim_ = -1;
+nnet-combined-component.cc:  if (!cfl->GetValue("cell-dim", &cell_dim_) || cell_dim_ <= 0)
+nnet-combined-component.cc:  w_h_.Resize(cell_dim_);
+nnet-combined-component.cc:  value_sum_.Resize(cell_dim_);
+nnet-combined-component.cc:  deriv_sum_.Resize(cell_dim_);
+nnet-combined-component.cc:      c = cell_dim_;
+nnet-combined-component.cc:      c = cell_dim_;
+nnet-combined-component.cc:  CuVector<BaseFloat> temp(cell_dim_);
+nnet-combined-component.cc:  CuMatrix<BaseFloat> thresholds(1, cell_dim_);
+nnet-combined-component.cc:  ReadBasicType(is, binary, &cell_dim_);
+nnet-combined-component.cc:  WriteBasicType(os, binary, cell_dim_);
+nnet-combined-component.cc:  KALDI_ASSERT(cell_dim_ > 0 &&
+nnet-combined-component.cc:  KALDI_ASSERT(w_h_.Dim() == cell_dim_);
+nnet-combined-component.cc:  KALDI_ASSERT(value_sum_.Dim() == cell_dim_ &&
+nnet-combined-component.cc:               deriv_sum_.Dim() == cell_dim_);
+nnet-combined-component.cc:    cell_dim_(other.cell_dim_),
+nnet-nnet.h:  int32 dim_offset;
+nnet-nnet.h:      node_type(nt), dim(-1), dim_offset(-1) { u.component_index = -1; }
+nnet-attention-component.h:    int32 query_dim = key_dim_ + context_dim_;
+nnet-attention-component.h:    return num_heads_ * (key_dim_ + value_dim_ + query_dim);
+nnet-attention-component.h:    return num_heads_ * (value_dim_ + (output_context_ ? context_dim_ : 0));
+nnet-attention-component.h:    // c is of dimension (num_heads_ * num-output-frames) by context_dim_,
+nnet-attention-component.h:  int32 key_dim_;
+nnet-attention-component.h:  int32 value_dim_;
+nnet-attention-component.h:  int32 context_dim_;  // This derived parameter equals 1 + num_left_inputs_ +
+nnet-attention-component.h:                                      // context_dim_ (num-heads has the
+nnet-utils.cc:  int32 dim_offset = 0;
+nnet-utils.cc:      SubVector<BaseFloat> this_part(*parameters, dim_offset, this_dim);
+nnet-utils.cc:      dim_offset += this_dim;
+nnet-utils.cc:  int32 dim_offset = 0;
+nnet-utils.cc:      const SubVector<BaseFloat> this_part(parameters, dim_offset, this_dim);
+nnet-utils.cc:      dim_offset += this_dim;
+nnet-utils.cc:                          bottleneck_dim_(bottleneck_dim),
+nnet-utils.cc:              << " components with SVD dimension " << bottleneck_dim_;
+nnet-utils.cc:        if (input_dim <= bottleneck_dim_ || output_dim <= bottleneck_dim_) {
+nnet-utils.cc:                     << " with SVD to rank " << bottleneck_dim_
+nnet-utils.cc:    int32 bottleneck_dim = bottleneck_dim_,
+nnet-utils.cc:                      << " dim-offset=" << node.dim_offset
+nnet-utils.cc:  int32 bottleneck_dim_;
+Binary file nnet-graph.o matches
+Binary file discriminative-supervision.o matches
+Binary file nnet-discriminative-example.o matches
+kaldi-src-layer-scale-component/nnet-attention-component.cc:         << ", key-dim=" << key_dim_
+kaldi-src-layer-scale-component/nnet-attention-component.cc:         << ", value-dim=" << value_dim_
+kaldi-src-layer-scale-component/nnet-attention-component.cc:         << ", context-dim=" << context_dim_
+kaldi-src-layer-scale-component/nnet-attention-component.cc:    key_dim_(other.key_dim_),
+kaldi-src-layer-scale-component/nnet-attention-component.cc:    value_dim_(other.value_dim_),
+kaldi-src-layer-scale-component/nnet-attention-component.cc:    context_dim_(other.context_dim_),
+kaldi-src-layer-scale-component/nnet-attention-component.cc:  key_dim_ = -1;
+kaldi-src-layer-scale-component/nnet-attention-component.cc:  value_dim_ = -1;
+kaldi-src-layer-scale-component/nnet-attention-component.cc:  bool ok = cfl->GetValue("key-dim", &key_dim_) &&
+kaldi-src-layer-scale-component/nnet-attention-component.cc:      cfl->GetValue("value-dim", &value_dim_) &&
+kaldi-src-layer-scale-component/nnet-attention-component.cc:  if (key_scale_ < 0.0) key_scale_ = 1.0 / sqrt(key_dim_);
+kaldi-src-layer-scale-component/nnet-attention-component.cc:  if (num_heads_ <= 0 || key_dim_ <= 0 || value_dim_ <= 0 ||
+kaldi-src-layer-scale-component/nnet-attention-component.cc:  context_dim_ = num_left_inputs_ + 1 + num_right_inputs_;
+kaldi-src-layer-scale-component/nnet-attention-component.cc:  memo->c.Resize(out->NumRows(), context_dim_ * num_heads_);
+kaldi-src-layer-scale-component/nnet-attention-component.cc:  int32 query_dim = key_dim_ + context_dim_;
+kaldi-src-layer-scale-component/nnet-attention-component.cc:  int32 input_dim_per_head = key_dim_ + value_dim_ + query_dim,
+kaldi-src-layer-scale-component/nnet-attention-component.cc:      output_dim_per_head = value_dim_ + (output_context_ ? context_dim_ : 0);
+kaldi-src-layer-scale-component/nnet-attention-component.cc:                                   h * input_dim_per_head, input_dim_per_head),
+kaldi-src-layer-scale-component/nnet-attention-component.cc:               h * context_dim_, context_dim_),
+kaldi-src-layer-scale-component/nnet-attention-component.cc:                 h * output_dim_per_head, output_dim_per_head);
+kaldi-src-layer-scale-component/nnet-attention-component.cc:  int32 query_dim = key_dim_ + context_dim_,
+kaldi-src-layer-scale-component/nnet-attention-component.cc:      full_value_dim = value_dim_ + (output_context_ ? context_dim_ : 0);
+kaldi-src-layer-scale-component/nnet-attention-component.cc:               in.NumCols() == (key_dim_ + value_dim_ + query_dim) &&
+kaldi-src-layer-scale-component/nnet-attention-component.cc:                                 key_dim_ + value_dim_, query_dim);
+kaldi-src-layer-scale-component/nnet-attention-component.cc:  CuSubMatrix<BaseFloat> keys(in, 0, in.NumRows(), 0, key_dim_);
+kaldi-src-layer-scale-component/nnet-attention-component.cc:  CuSubMatrix<BaseFloat> values(in, 0, in.NumRows(), key_dim_, value_dim_);
+kaldi-src-layer-scale-component/nnet-attention-component.cc:    posterior_stats_.Resize(num_heads_, context_dim_);
+kaldi-src-layer-scale-component/nnet-attention-component.cc:    CuVector<BaseFloat> c_sum(num_heads_ * context_dim_);
+kaldi-src-layer-scale-component/nnet-attention-component.cc:                                        context_dim_, context_dim_);
+kaldi-src-layer-scale-component/nnet-attention-component.cc:    KALDI_ASSERT(c.NumCols() == num_heads_ * context_dim_);
+kaldi-src-layer-scale-component/nnet-attention-component.cc:    CuVector<BaseFloat> dot_prod(num_heads_ * context_dim_);
+kaldi-src-layer-scale-component/nnet-attention-component.cc:    // size 'context_dim_'; that gives us the entropy contribution
+kaldi-src-layer-scale-component/nnet-attention-component.cc:                                       context_dim_, context_dim_);
+kaldi-src-layer-scale-component/nnet-attention-component.cc:  KALDI_ASSERT(num_heads_ > 0 && key_dim_ > 0 && value_dim_ > 0 &&
+kaldi-src-layer-scale-component/nnet-attention-component.cc:               context_dim_ == (num_left_inputs_ + 1 + num_right_inputs_) &&
+kaldi-src-layer-scale-component/nnet-attention-component.cc:  int32 query_dim = key_dim_ + context_dim_,
+kaldi-src-layer-scale-component/nnet-attention-component.cc:      input_dim_per_head = key_dim_ + value_dim_ + query_dim,
+kaldi-src-layer-scale-component/nnet-attention-component.cc:      output_dim_per_head = value_dim_ + (output_context_ ? context_dim_ : 0);
+kaldi-src-layer-scale-component/nnet-attention-component.cc:                      h * input_dim_per_head, input_dim_per_head),
+kaldi-src-layer-scale-component/nnet-attention-component.cc:               h * context_dim_, context_dim_),
+kaldi-src-layer-scale-component/nnet-attention-component.cc:                       h * output_dim_per_head, output_dim_per_head),
+kaldi-src-layer-scale-component/nnet-attention-component.cc:                      h * input_dim_per_head, input_dim_per_head);
+kaldi-src-layer-scale-component/nnet-attention-component.cc:  int32 query_dim = key_dim_ + context_dim_,
+kaldi-src-layer-scale-component/nnet-attention-component.cc:      full_value_dim = value_dim_ + (output_context_ ? context_dim_ : 0);
+kaldi-src-layer-scale-component/nnet-attention-component.cc:               in_value.NumCols() == (key_dim_ + value_dim_ + query_dim) &&
+kaldi-src-layer-scale-component/nnet-attention-component.cc:               c.NumCols() == context_dim_);
+kaldi-src-layer-scale-component/nnet-attention-component.cc:                                 key_dim_ + value_dim_, query_dim),
+kaldi-src-layer-scale-component/nnet-attention-component.cc:                    key_dim_ + value_dim_, query_dim),
+kaldi-src-layer-scale-component/nnet-attention-component.cc:      keys(in_value, 0, in_value.NumRows(), 0, key_dim_),
+kaldi-src-layer-scale-component/nnet-attention-component.cc:      keys_deriv(*in_deriv,  0, in_value.NumRows(), 0, key_dim_),
+kaldi-src-layer-scale-component/nnet-attention-component.cc:      values(in_value, 0, in_value.NumRows(), key_dim_, value_dim_),
+kaldi-src-layer-scale-component/nnet-attention-component.cc:      values_deriv(*in_deriv, 0, in_value.NumRows(), key_dim_, value_dim_);
+kaldi-src-layer-scale-component/nnet-attention-component.cc:  WriteBasicType(os, binary, key_dim_);
+kaldi-src-layer-scale-component/nnet-attention-component.cc:  WriteBasicType(os, binary, value_dim_);
+kaldi-src-layer-scale-component/nnet-attention-component.cc:  ReadBasicType(is, binary, &key_dim_);
+kaldi-src-layer-scale-component/nnet-attention-component.cc:  ReadBasicType(is, binary, &value_dim_);
+kaldi-src-layer-scale-component/nnet-attention-component.cc:  context_dim_ = num_left_inputs_ + 1 + num_right_inputs_;
+kaldi-src-layer-scale-component/nnet-attention-component.cc:  desired_indexes->resize(context_dim_);
+kaldi-src-layer-scale-component/nnet-attention-component.cc:  KALDI_ASSERT(i == context_dim_);
+kaldi-src-layer-scale-component/nnet-attention-component.cc:    used_inputs->reserve(context_dim_);
+Binary file kaldi-src-layer-scale-component/nnet-computation-graph.o matches
+Binary file kaldi-src-layer-scale-component/nnet-batch-compute.o matches
+Binary file kaldi-src-layer-scale-component/nnet-compile.o matches
+Binary file kaldi-src-layer-scale-component/nnet-am-decodable-simple.o matches
+Binary file kaldi-src-layer-scale-component/nnet-computation.o matches
+kaldi-src-layer-scale-component/nnet-diagnostics.cc:        if (config_.compute_per_dim_accuracy &&
+kaldi-src-layer-scale-component/nnet-diagnostics.cc:                        config_.compute_per_dim_accuracy ?
+kaldi-src-layer-scale-component/nnet-diagnostics.cc:                        config_.compute_per_dim_accuracy ?
+kaldi-src-layer-scale-component/nnet-combined-component.h:  int32 input_x_dim_;   // size of the input along x-axis
+kaldi-src-layer-scale-component/nnet-combined-component.h:  int32 input_y_dim_;   // size of input along y-axis
+kaldi-src-layer-scale-component/nnet-combined-component.h:  int32 input_z_dim_;   // size of input along z-axis
+kaldi-src-layer-scale-component/nnet-combined-component.h:  int32 filt_x_dim_;    // size of the filter along x-axis
+kaldi-src-layer-scale-component/nnet-combined-component.h:  int32 filt_y_dim_;    // size of the filter along y-axis
+kaldi-src-layer-scale-component/nnet-combined-component.h:  // there is no filt_z_dim_ as it is always assumed to be
+kaldi-src-layer-scale-component/nnet-combined-component.h:  // the same as input_z_dim_
+kaldi-src-layer-scale-component/nnet-combined-component.h:  // divide by (count_ times cell_dim_).
+kaldi-src-layer-scale-component/nnet-combined-component.h:  MaxpoolingComponent(): input_x_dim_(0), input_y_dim_(0), input_z_dim_(0),
+kaldi-src-layer-scale-component/nnet-combined-component.h:  int32 input_x_dim_;   // size of the input along x-axis
+kaldi-src-layer-scale-component/nnet-combined-component.h:  int32 input_y_dim_;   // size of input along y-axis
+kaldi-src-layer-scale-component/nnet-combined-component.h:  int32 input_z_dim_;   // size of input along z-axis
+kaldi-src-layer-scale-component/nnet-combined-component.h:  int32 cell_dim_;  // cell dimension, e.g. 1024.
+kaldi-src-layer-scale-component/nnet-combined-component.h:  int32 recurrent_dim_;  // recurrent dimension, e.g. 256 for projected GRU;
+kaldi-src-layer-scale-component/nnet-combined-component.h:  // The matrix W^h, of dimension cell_dim_ by recurrent_dim_.
+kaldi-src-layer-scale-component/nnet-combined-component.h:  // Of dimension cell_dim_, this is comparable to the value_sum_ vector in
+kaldi-src-layer-scale-component/nnet-combined-component.h:  // Of dimension cell_dim_, this is comparable to the deriv_sum_ vector in
+kaldi-src-layer-scale-component/nnet-combined-component.h:  // recurrent_dim_ if use-natural-gradient was true, else not set up).
+kaldi-src-layer-scale-component/nnet-combined-component.h:  // recurrent_dim_ if use-natural-gradient was true, else not set up).
+kaldi-src-layer-scale-component/nnet-combined-component.h:  int32 cell_dim_;  // cell dimension, e.g. 1024.
+kaldi-src-layer-scale-component/nnet-combined-component.h:  // The matrix W^h, of dimension cell_dim_ by recurrent_dim_.
+kaldi-src-layer-scale-component/nnet-combined-component.h:  // Of dimension cell_dim_, this is comparable to the value_sum_ vector in
+kaldi-src-layer-scale-component/nnet-combined-component.h:  // Of dimension cell_dim_, this is comparable to the deriv_sum_ vector in
+Binary file kaldi-src-layer-scale-component/decodable-online-looped.o matches
+kaldi-src-layer-scale-component/nnet-computation-graph.cc:  int32 dim_range_node = sub_phase[0].first;
+kaldi-src-layer-scale-component/nnet-computation-graph.cc:  KALDI_ASSERT(nnet_.IsDimRangeNode(dim_range_node));
+kaldi-src-layer-scale-component/nnet-computation-graph.cc:  const NetworkNode &node = nnet_.GetNode(dim_range_node);
+kaldi-src-layer-scale-component/nnet-computation-graph.cc:    std::pair<int32, int32> p(source_step_index, dim_range_node);
+kaldi-src-layer-scale-component/nnet-computation-graph.cc:    if (dim_range_nodes_.count(p) > 0) {
+kaldi-src-layer-scale-component/nnet-computation-graph.cc:    dim_range_nodes_.insert(p);
+kaldi-src-layer-scale-component/nnet-computation-graph.cc:      iter->first = dim_range_node;
+Binary file kaldi-src-layer-scale-component/nnet-attention-component.o matches
+kaldi-src-layer-scale-component/nnet-combined-component.cc:    input_x_dim_(0), input_y_dim_(0), input_z_dim_(0),
+kaldi-src-layer-scale-component/nnet-combined-component.cc:    filt_x_dim_(0), filt_y_dim_(0),
+kaldi-src-layer-scale-component/nnet-combined-component.cc:    input_x_dim_(component.input_x_dim_),
+kaldi-src-layer-scale-component/nnet-combined-component.cc:    input_y_dim_(component.input_y_dim_),
+kaldi-src-layer-scale-component/nnet-combined-component.cc:    input_z_dim_(component.input_z_dim_),
+kaldi-src-layer-scale-component/nnet-combined-component.cc:    filt_x_dim_(component.filt_x_dim_),
+kaldi-src-layer-scale-component/nnet-combined-component.cc:    filt_y_dim_(component.filt_y_dim_),
+kaldi-src-layer-scale-component/nnet-combined-component.cc:    input_x_dim_(input_x_dim),
+kaldi-src-layer-scale-component/nnet-combined-component.cc:    input_y_dim_(input_y_dim),
+kaldi-src-layer-scale-component/nnet-combined-component.cc:    input_z_dim_(input_z_dim),
+kaldi-src-layer-scale-component/nnet-combined-component.cc:    filt_x_dim_(filt_x_dim),
+kaldi-src-layer-scale-component/nnet-combined-component.cc:    filt_y_dim_(filt_y_dim),
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  return input_x_dim_ * input_y_dim_ * input_z_dim_;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  int32 num_x_steps = (1 + (input_x_dim_ - filt_x_dim_) / filt_x_step_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  int32 num_y_steps = (1 + (input_y_dim_ - filt_y_dim_) / filt_y_step_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  input_x_dim_ = input_x_dim;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  input_y_dim_ = input_y_dim;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  input_z_dim_ = input_z_dim;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  filt_x_dim_ = filt_x_dim;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  filt_y_dim_ = filt_y_dim;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  KALDI_ASSERT((input_x_dim_ - filt_x_dim_) % filt_x_step_ == 0);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  KALDI_ASSERT((input_y_dim_ - filt_y_dim_) % filt_y_step_ == 0);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  int32 filter_dim = filt_x_dim_ * filt_y_dim_ * input_z_dim_;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  input_x_dim_ = input_x_dim;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  input_y_dim_ = input_y_dim;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  input_z_dim_ = input_z_dim;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  filt_x_dim_ = filt_x_dim;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  filt_y_dim_ = filt_y_dim;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  int32 filter_dim = (filt_x_dim_ * filt_y_dim_ * input_z_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:         << ", input-x-dim=" << input_x_dim_
+kaldi-src-layer-scale-component/nnet-combined-component.cc:         << ", input-y-dim=" << input_y_dim_
+kaldi-src-layer-scale-component/nnet-combined-component.cc:         << ", input-z-dim=" << input_z_dim_
+kaldi-src-layer-scale-component/nnet-combined-component.cc:         << ", filt-x-dim=" << filt_x_dim_
+kaldi-src-layer-scale-component/nnet-combined-component.cc:         << ", filt-y-dim=" << filt_y_dim_
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  int32 num_x_steps = (1 + (input_x_dim_ - filt_x_dim_) / filt_x_step_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  int32 num_y_steps = (1 + (input_y_dim_ - filt_y_dim_) / filt_y_step_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:              filt_x_dim = filt_x_dim_,
+kaldi-src-layer-scale-component/nnet-combined-component.cc:              filt_y_dim = filt_y_dim_,
+kaldi-src-layer-scale-component/nnet-combined-component.cc:              input_x_dim = input_x_dim_,
+kaldi-src-layer-scale-component/nnet-combined-component.cc:              input_y_dim = input_y_dim_,
+kaldi-src-layer-scale-component/nnet-combined-component.cc:              input_z_dim = input_z_dim_,
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  const int32 num_x_steps = (1 + (input_x_dim_ - filt_x_dim_) / filt_x_step_),
+kaldi-src-layer-scale-component/nnet-combined-component.cc:              num_y_steps = (1 + (input_y_dim_ - filt_y_dim_) / filt_y_step_),
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  const int32 num_x_steps = (1 + (input_x_dim_ - filt_x_dim_) / filt_x_step_),
+kaldi-src-layer-scale-component/nnet-combined-component.cc:              num_y_steps = (1 + (input_y_dim_ - filt_y_dim_) / filt_y_step_),
+kaldi-src-layer-scale-component/nnet-combined-component.cc:              filt_x_dim = filt_x_dim_,
+kaldi-src-layer-scale-component/nnet-combined-component.cc:              filt_y_dim = filt_y_dim_,
+kaldi-src-layer-scale-component/nnet-combined-component.cc:              input_x_dim = input_x_dim_,
+kaldi-src-layer-scale-component/nnet-combined-component.cc:              input_y_dim = input_y_dim_,
+kaldi-src-layer-scale-component/nnet-combined-component.cc:              input_z_dim = input_z_dim_,
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  const int32 num_x_steps = (1 + (input_x_dim_ - filt_x_dim_) / filt_x_step_),
+kaldi-src-layer-scale-component/nnet-combined-component.cc:              num_y_steps = (1 + (input_y_dim_ - filt_y_dim_) / filt_y_step_),
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  const int32 num_x_steps = (1 + (input_x_dim_ - filt_x_dim_) / filt_x_step_),
+kaldi-src-layer-scale-component/nnet-combined-component.cc:              num_y_steps = (1 + (input_y_dim_ - filt_y_dim_) / filt_y_step_),
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  ReadBasicType(is, binary, &input_x_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  ReadBasicType(is, binary, &input_y_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  ReadBasicType(is, binary, &input_z_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  ReadBasicType(is, binary, &filt_x_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  ReadBasicType(is, binary, &filt_y_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  WriteBasicType(os, binary, input_x_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  WriteBasicType(os, binary, input_y_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  WriteBasicType(os, binary, input_z_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  WriteBasicType(os, binary, filt_x_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  WriteBasicType(os, binary, filt_y_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  return input_x_dim_ * input_y_dim_ * input_z_dim_;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:    input_x_dim_(component.input_x_dim_),
+kaldi-src-layer-scale-component/nnet-combined-component.cc:    input_y_dim_(component.input_y_dim_),
+kaldi-src-layer-scale-component/nnet-combined-component.cc:    input_z_dim_(component.input_z_dim_),
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  int32 num_pools_x = 1 + (input_x_dim_ - pool_x_size_) / pool_x_step_;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  int32 num_pools_y = 1 + (input_y_dim_ - pool_y_size_) / pool_y_step_;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  int32 num_pools_z = 1 + (input_z_dim_ - pool_z_size_) / pool_z_step_;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  KALDI_ASSERT(input_x_dim_ > 0);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  KALDI_ASSERT(input_y_dim_ > 0);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  KALDI_ASSERT(input_z_dim_ > 0);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  KALDI_ASSERT(input_x_dim_ >= pool_x_size_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  KALDI_ASSERT(input_y_dim_ >= pool_y_size_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  KALDI_ASSERT(input_z_dim_ >= pool_z_size_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  KALDI_ASSERT((input_x_dim_ - pool_x_size_) % pool_x_step_  == 0);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  KALDI_ASSERT((input_y_dim_ - pool_y_size_) % pool_y_step_  == 0);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  KALDI_ASSERT((input_z_dim_ - pool_z_size_) % pool_z_step_  == 0);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  ok = ok && cfl->GetValue("input-x-dim", &input_x_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  ok = ok && cfl->GetValue("input-y-dim", &input_y_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  ok = ok && cfl->GetValue("input-z-dim", &input_z_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  int32 num_pools_x = 1 + (input_x_dim_ - pool_x_size_) / pool_x_step_;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  int32 num_pools_y = 1 + (input_y_dim_ - pool_y_size_) / pool_y_step_;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  int32 num_pools_z = 1 + (input_z_dim_ - pool_z_size_) / pool_z_step_;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:              column_map[index] = (x_pool * pool_x_step_ + x) * input_y_dim_ * input_z_dim_ +
+kaldi-src-layer-scale-component/nnet-combined-component.cc:                                  (y_pool * pool_y_step_ + y) * input_z_dim_ +
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  int32 num_pools_x = 1 + (input_x_dim_ - pool_x_size_) / pool_x_step_;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  int32 num_pools_y = 1 + (input_y_dim_ - pool_y_size_) / pool_y_step_;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  int32 num_pools_z = 1 + (input_z_dim_ - pool_z_size_) / pool_z_step_;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:              int32 vector_index = (x_pool * pool_x_step_ + x) * input_y_dim_ * input_z_dim_ +
+kaldi-src-layer-scale-component/nnet-combined-component.cc:                                  (y_pool * pool_y_step_ + y) * input_z_dim_ +
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  ReadBasicType(is, binary, &input_x_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  ReadBasicType(is, binary, &input_y_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  ReadBasicType(is, binary, &input_z_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  WriteBasicType(os, binary, input_x_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  WriteBasicType(os, binary, input_y_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  WriteBasicType(os, binary, input_z_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:         << ", input-x-dim=" << input_x_dim_
+kaldi-src-layer-scale-component/nnet-combined-component.cc:         << ", input-y-dim=" << input_y_dim_
+kaldi-src-layer-scale-component/nnet-combined-component.cc:         << ", input-z-dim=" << input_z_dim_
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  if (recurrent_dim_ == cell_dim_) {
+kaldi-src-layer-scale-component/nnet-combined-component.cc:    return 4 * cell_dim_;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:    return 3 * cell_dim_ + 2 * recurrent_dim_;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  return 2 * cell_dim_;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:         << ", cell-dim=" << cell_dim_
+kaldi-src-layer-scale-component/nnet-combined-component.cc:         << ", recurrent-dim=" << recurrent_dim_;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:           << (self_repair_total_ / (count_ * cell_dim_));
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  cell_dim_ = -1;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  recurrent_dim_ = -1;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  if (!cfl->GetValue("cell-dim", &cell_dim_) || cell_dim_ <= 0)
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  BaseFloat param_stddev = 1.0 / std::sqrt(cell_dim_),
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  cfl->GetValue("recurrent-dim", &recurrent_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  if (recurrent_dim_ < 0)
+kaldi-src-layer-scale-component/nnet-combined-component.cc:    recurrent_dim_ = cell_dim_;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  if (recurrent_dim_ == 0 || recurrent_dim_ > cell_dim_)
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  w_h_.Resize(cell_dim_, recurrent_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  value_sum_.Resize(cell_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  deriv_sum_.Resize(cell_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  // If recurrent_dim_ != cell_dim_, this is projected GRU and we
+kaldi-src-layer-scale-component/nnet-combined-component.cc:      c = cell_dim_,
+kaldi-src-layer-scale-component/nnet-combined-component.cc:      r =  recurrent_dim_;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  // By setting s_t1 to the last recurrent_dim_ rows of 'in', we get something
+kaldi-src-layer-scale-component/nnet-combined-component.cc:      c = cell_dim_,
+kaldi-src-layer-scale-component/nnet-combined-component.cc:      r = recurrent_dim_;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  CuVector<BaseFloat> temp(cell_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  CuMatrix<BaseFloat> thresholds(1, cell_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  ReadBasicType(is, binary, &cell_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  ReadBasicType(is, binary, &recurrent_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  WriteBasicType(os, binary, cell_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  WriteBasicType(os, binary, recurrent_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  KALDI_ASSERT(cell_dim_ > 0 && recurrent_dim_ > 0 &&
+kaldi-src-layer-scale-component/nnet-combined-component.cc:               recurrent_dim_ <= cell_dim_ &&
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  KALDI_ASSERT(w_h_.NumRows() == cell_dim_ &&
+kaldi-src-layer-scale-component/nnet-combined-component.cc:               w_h_.NumCols() == recurrent_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  KALDI_ASSERT(value_sum_.Dim() == cell_dim_ &&
+kaldi-src-layer-scale-component/nnet-combined-component.cc:               deriv_sum_.Dim() == cell_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:    cell_dim_(other.cell_dim_),
+kaldi-src-layer-scale-component/nnet-combined-component.cc:    recurrent_dim_(other.recurrent_dim_),
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  return 3 * cell_dim_;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  return 2 * cell_dim_;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:         << ", cell-dim=" << cell_dim_;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:           << (self_repair_total_ / (count_ * cell_dim_));
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  cell_dim_ = -1;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  if (!cfl->GetValue("cell-dim", &cell_dim_) || cell_dim_ <= 0)
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  w_h_.Resize(cell_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  value_sum_.Resize(cell_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  deriv_sum_.Resize(cell_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:      c = cell_dim_;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:      c = cell_dim_;
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  CuVector<BaseFloat> temp(cell_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  CuMatrix<BaseFloat> thresholds(1, cell_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  ReadBasicType(is, binary, &cell_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  WriteBasicType(os, binary, cell_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  KALDI_ASSERT(cell_dim_ > 0 &&
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  KALDI_ASSERT(w_h_.Dim() == cell_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:  KALDI_ASSERT(value_sum_.Dim() == cell_dim_ &&
+kaldi-src-layer-scale-component/nnet-combined-component.cc:               deriv_sum_.Dim() == cell_dim_);
+kaldi-src-layer-scale-component/nnet-combined-component.cc:    cell_dim_(other.cell_dim_),
+kaldi-src-layer-scale-component/nnet-attention-component.h:    int32 query_dim = key_dim_ + context_dim_;
+kaldi-src-layer-scale-component/nnet-attention-component.h:    return num_heads_ * (key_dim_ + value_dim_ + query_dim);
+kaldi-src-layer-scale-component/nnet-attention-component.h:    return num_heads_ * (value_dim_ + (output_context_ ? context_dim_ : 0));
+kaldi-src-layer-scale-component/nnet-attention-component.h:    // c is of dimension (num_heads_ * num-output-frames) by context_dim_,
+kaldi-src-layer-scale-component/nnet-attention-component.h:  int32 key_dim_;
+kaldi-src-layer-scale-component/nnet-attention-component.h:  int32 value_dim_;
+kaldi-src-layer-scale-component/nnet-attention-component.h:  int32 context_dim_;  // This derived parameter equals 1 + num_left_inputs_ +
+kaldi-src-layer-scale-component/nnet-attention-component.h:                                      // context_dim_ (num-heads has the
+Binary file kaldi-src-layer-scale-component/discriminative-supervision.o matches
+Binary file kaldi-src-layer-scale-component/nnet-discriminative-example.o matches
+Binary file kaldi-src-layer-scale-component/nnet-chain-example.o matches
+Binary file kaldi-src-layer-scale-component/nnet-combined-component.o matches
+kaldi-src-layer-scale-component/nnet-batch-compute.h:  int32 input_dim_;
+kaldi-src-layer-scale-component/nnet-batch-compute.h:  int32 ivector_dim_;
+kaldi-src-layer-scale-component/nnet-batch-compute.h:  int32 output_dim_;
+kaldi-src-layer-scale-component/nnet-compile.cc:                                                  node.dim_offset, node.dim);
+kaldi-src-layer-scale-component/nnet-compile.cc:                                                    node.dim_offset, node.dim);
+kaldi-src-layer-scale-component/nnet-compile.cc:        int32 cur_dim_offset = 0;
+kaldi-src-layer-scale-component/nnet-compile.cc:                                        cur_dim_offset, this_dim);
+kaldi-src-layer-scale-component/nnet-compile.cc:                                          cur_dim_offset, this_dim);
+kaldi-src-layer-scale-component/nnet-compile.cc:          cur_dim_offset += this_dim;
+kaldi-src-layer-scale-component/nnet-compile.cc:        KALDI_ASSERT(cur_dim_offset == desc.Dim(nnet_));
+Binary file kaldi-src-layer-scale-component/nnet-compile-looped.o matches
+Binary file kaldi-src-layer-scale-component/nnet-example.o matches
+kaldi-src-layer-scale-component/nnet-component-itf.cc:  KALDI_ASSERT(out_value.NumCols() == dim_);
+kaldi-src-layer-scale-component/nnet-component-itf.cc:  if (value_sum_.Dim() != dim_ ||
+kaldi-src-layer-scale-component/nnet-component-itf.cc:      (deriv != NULL && deriv_sum_.Dim() != dim_)) {
+kaldi-src-layer-scale-component/nnet-component-itf.cc:    if (value_sum_.Dim() != dim_) {
+kaldi-src-layer-scale-component/nnet-component-itf.cc:      value_sum_.Resize(dim_);
+kaldi-src-layer-scale-component/nnet-component-itf.cc:    if (deriv != NULL && deriv_sum_.Dim() != dim_) {
+kaldi-src-layer-scale-component/nnet-component-itf.cc:      deriv_sum_.Resize(dim_);
+kaldi-src-layer-scale-component/nnet-component-itf.cc:  CuVector<BaseFloat> temp(dim_);
+kaldi-src-layer-scale-component/nnet-component-itf.cc:  KALDI_ASSERT(out_deriv.NumCols() == dim_);
+kaldi-src-layer-scale-component/nnet-component-itf.cc:  if (oderiv_sumsq_.Dim() != dim_) {
+kaldi-src-layer-scale-component/nnet-component-itf.cc:    oderiv_sumsq_.Resize(dim_);
+kaldi-src-layer-scale-component/nnet-component-itf.cc:  CuVector<BaseFloat> temp(dim_);
+kaldi-src-layer-scale-component/nnet-component-itf.cc:  stream << Type() << ", dim=" << dim_;
+kaldi-src-layer-scale-component/nnet-component-itf.cc:  if (block_dim_ != dim_)
+kaldi-src-layer-scale-component/nnet-component-itf.cc:    stream << ", block-dim=" << block_dim_;
+kaldi-src-layer-scale-component/nnet-component-itf.cc:  if (count_ > 0 && value_sum_.Dim() == dim_) {
+kaldi-src-layer-scale-component/nnet-component-itf.cc:    if (deriv_sum_.Dim() == dim_) {
+kaldi-src-layer-scale-component/nnet-component-itf.cc:  if (oderiv_count_ > 0 && oderiv_sumsq_.Dim() == dim_) {
+kaldi-src-layer-scale-component/nnet-component-itf.cc:  ReadBasicType(is, binary, &dim_); // Read dimension.
+kaldi-src-layer-scale-component/nnet-component-itf.cc:    ReadBasicType(is, binary, &block_dim_);
+kaldi-src-layer-scale-component/nnet-component-itf.cc:    block_dim_ = dim_;
+kaldi-src-layer-scale-component/nnet-component-itf.cc:  WriteBasicType(os, binary, dim_);
+kaldi-src-layer-scale-component/nnet-component-itf.cc:  if (block_dim_ != dim_) {
+kaldi-src-layer-scale-component/nnet-component-itf.cc:    WriteBasicType(os, binary, block_dim_);
+kaldi-src-layer-scale-component/nnet-component-itf.cc:    dim_(-1), block_dim_(-1), count_(0.0), oderiv_count_(0.0),
+kaldi-src-layer-scale-component/nnet-component-itf.cc:    dim_(other.dim_), block_dim_(other.block_dim_),
+kaldi-src-layer-scale-component/nnet-component-itf.cc:  bool ok = cfl->GetValue("dim", &dim_);
+kaldi-src-layer-scale-component/nnet-component-itf.cc:  block_dim_ = dim_;
+kaldi-src-layer-scale-component/nnet-component-itf.cc:  cfl->GetValue("block-dim", &block_dim_);
+kaldi-src-layer-scale-component/nnet-component-itf.cc:  if (!ok || cfl->HasUnusedValues() || dim_ <= 0 ||
+kaldi-src-layer-scale-component/nnet-component-itf.cc:      block_dim_ <= 0 || dim_ % block_dim_ != 0)
+kaldi-src-layer-scale-component/nnet-am-decodable-simple.h:  inline int32 OutputDim() const { return output_dim_; }
+kaldi-src-layer-scale-component/nnet-am-decodable-simple.h:  int32 output_dim_;
+Binary file kaldi-src-layer-scale-component/attention.o matches
+kaldi-src-layer-scale-component/nnet-am-decodable-simple.cc:    output_dim_(nnet_.OutputDim("output")),
+Binary file kaldi-src-layer-scale-component/nnet-convolutional-component.o matches
+Binary file kaldi-src-layer-scale-component/nnet-analyze.o matches
+Binary file kaldi-src-layer-scale-component/nnet-discriminative-training.o matches
+Binary file kaldi-src-layer-scale-component/nnet-component-itf.o matches
+kaldi-src-layer-scale-component/nnet-computation-graph.h:  /// dim_range_nodes_ is used when allocating steps for nodes of type kDimRangeNode.
+kaldi-src-layer-scale-component/nnet-computation-graph.h:  /// This is a set of (source_step, dim_range_node_index),
+kaldi-src-layer-scale-component/nnet-computation-graph.h:  std::unordered_set<std::pair<int32, int32>, PairHasher<int32> > dim_range_nodes_;
+kaldi-src-layer-scale-component/nnet-convolutional-component.cc:  int32 dim_in = linear_params_.NumCols() + 1,
+kaldi-src-layer-scale-component/nnet-convolutional-component.cc:      dim_out = linear_params_.NumRows();
+kaldi-src-layer-scale-component/nnet-convolutional-component.cc:    rank_in = std::min<int32>(80, (dim_in + 1) / 2);
+kaldi-src-layer-scale-component/nnet-convolutional-component.cc:    rank_out = std::min<int32>(80, (dim_out + 1) / 2);
+Binary file kaldi-src-layer-scale-component/decodable-simple-looped.o matches
+kaldi-src-layer-scale-component/nnet-batch-compute.cc:  input_dim_ = nnet.InputDim("input");
+kaldi-src-layer-scale-component/nnet-batch-compute.cc:  ivector_dim_ = std::max<int32>(0, nnet.InputDim("ivector"));
+kaldi-src-layer-scale-component/nnet-batch-compute.cc:  output_dim_ = nnet.OutputDim("output");
+kaldi-src-layer-scale-component/nnet-batch-compute.cc:  KALDI_ASSERT(input_dim_ > 0 && output_dim_ > 0);
+kaldi-src-layer-scale-component/nnet-batch-compute.cc:    if (input.NumCols() != input_dim_) {
+kaldi-src-layer-scale-component/nnet-batch-compute.cc:          << input_dim_ << ", got " << input.NumCols();
+kaldi-src-layer-scale-component/nnet-batch-compute.cc:    if (ivector_dim_ != 0 && ivector_dim == 0)
+kaldi-src-layer-scale-component/nnet-batch-compute.cc:    else if (ivector_dim_ == 0 && ivector_dim != 0)
+kaldi-src-layer-scale-component/nnet-batch-compute.cc:    else if (ivector_dim != ivector_dim_)
+kaldi-src-layer-scale-component/nnet-batch-compute.cc:                << ivector_dim_ << ", you supplied " << ivector_dim;
+Binary file kaldi-src-layer-scale-component/convolution.o matches
+kaldi-src-layer-scale-component/nnet-component-itf.h:  virtual int32 InputDim() const { return dim_; }
+kaldi-src-layer-scale-component/nnet-component-itf.h:  virtual int32 OutputDim() const { return dim_; }
+kaldi-src-layer-scale-component/nnet-component-itf.h:  // dim_ is the input dimension (and almost always the output dimension) of the
+kaldi-src-layer-scale-component/nnet-component-itf.h:  int32 dim_;
+kaldi-src-layer-scale-component/nnet-component-itf.h:  // block_dim_ will normally be the same as dim_, but it may be any nonzero
+kaldi-src-layer-scale-component/nnet-component-itf.h:  // divisor of dim_; if so, each vector is treated as a number of blocks
+kaldi-src-layer-scale-component/nnet-component-itf.h:  int32 block_dim_;
+Binary file kaldi-src-layer-scale-component/nnet-discriminative-diagnostics.o matches
+kaldi-src-layer-scale-component/nnet-diagnostics.h:  bool compute_per_dim_accuracy;
+kaldi-src-layer-scale-component/nnet-diagnostics.h:      compute_per_dim_accuracy(false) { }
+kaldi-src-layer-scale-component/nnet-diagnostics.h:    opts->Register("compute-per-dim-accuracy", &compute_per_dim_accuracy,
+Binary file kaldi-src-layer-scale-component/nnet-diagnostics.o matches
+kaldi-src-layer-scale-component/nnet-descriptor.h:  virtual int32 Dim(const Nnet &nnet) const { return dim_; }
+kaldi-src-layer-scale-component/nnet-descriptor.h:  int32 dim_;
+Binary file kaldi-src-layer-scale-component/nnet-chain-training.o matches
+Binary file kaldi-src-layer-scale-component/natural-gradient-online.o matches
+Binary file kaldi-src-layer-scale-component/discriminative-training.o matches
+kaldi-src-layer-scale-component/nnet-descriptor.cc:  os << "Const(" << value_ << ", " << dim_ << ')';
+kaldi-src-layer-scale-component/nnet-descriptor.cc:  return new ConstantSumDescriptor(value_, dim_);
+kaldi-src-layer-scale-component/nnet-descriptor.cc:    value_(value), dim_(dim) {
+Binary file kaldi-src-layer-scale-component/nnet-chain-diagnostics.o matches
+Binary file kaldi-src-layer-scale-component/nnet-descriptor.o matches
+Binary file kaldi-src-layer-scale-component/am-nnet-simple.o matches
+Binary file kaldi-src-layer-scale-component/nnet-compute.o matches
+Binary file nnet-chain-example.o matches
+Binary file nnet-combined-component.o matches
+nnet-batch-compute.h:  int32 input_dim_;
+nnet-batch-compute.h:  int32 ivector_dim_;
+nnet-batch-compute.h:  int32 output_dim_;
+nnet-compile.cc:                                                  node.dim_offset, node.dim);
+nnet-compile.cc:                                                    node.dim_offset, node.dim);
+nnet-compile.cc:        int32 cur_dim_offset = 0;
+nnet-compile.cc:                                        cur_dim_offset, this_dim);
+nnet-compile.cc:                                          cur_dim_offset, this_dim);
+nnet-compile.cc:          cur_dim_offset += this_dim;
+nnet-compile.cc:        KALDI_ASSERT(cur_dim_offset == desc.Dim(nnet_));
+Binary file nnet-compile-looped.o matches
+Binary file nnet-example.o matches
+nnet-simple-component.h:  PnormComponent(): input_dim_(0), output_dim_(0) { }
+nnet-simple-component.h:  virtual int32 InputDim() const { return input_dim_; }
+nnet-simple-component.h:  virtual int32 OutputDim() const { return output_dim_; }
+nnet-simple-component.h:  virtual Component* Copy() const { return new PnormComponent(input_dim_,
+nnet-simple-component.h:                                                              output_dim_); }
+nnet-simple-component.h:  int32 input_dim_;
+nnet-simple-component.h:  int32 output_dim_;
+nnet-simple-component.h:  DropoutComponent(): dim_(0), dropout_proportion_(0.0),
+nnet-simple-component.h:  virtual int32 InputDim() const { return dim_; }
+nnet-simple-component.h:  virtual int32 OutputDim() const { return dim_; }
+nnet-simple-component.h:  int32 dim_;
+nnet-simple-component.h:  ElementwiseProductComponent(): input_dim_(0), output_dim_(0) { }
+nnet-simple-component.h:  virtual int32 InputDim() const { return input_dim_; }
+nnet-simple-component.h:  virtual int32 OutputDim() const { return output_dim_; }
+nnet-simple-component.h:  virtual Component* Copy() const { return new ElementwiseProductComponent(input_dim_,
+nnet-simple-component.h:                                                              output_dim_); }
+nnet-simple-component.h:  int32 input_dim_;
+nnet-simple-component.h:  int32 output_dim_;
+nnet-simple-component.h:        kStoresStats|(block_dim_ != dim_ ? kInputContiguous : 0);
+nnet-simple-component.h:  virtual int32 InputDim() const { return input_dim_; }
+nnet-simple-component.h:  virtual int32 OutputDim() const { return output_dim_; }
+nnet-simple-component.h:  int32 input_dim_;
+nnet-simple-component.h:  int32 output_dim_;
+nnet-simple-component.h:      dim_(other.dim_), backprop_scale_(other.backprop_scale_) { }
+nnet-simple-component.h:  virtual int32 InputDim() const { return dim_; }
+nnet-simple-component.h:  virtual int32 OutputDim() const { return dim_; }
+nnet-simple-component.h:  int32 dim_;
+nnet-simple-component.h:  virtual int32 InputDim() const { return input_dim_; }
+nnet-simple-component.h:  virtual int32 OutputDim() const { return output_dim_; }
+nnet-simple-component.h:  int32 input_dim_;
+nnet-simple-component.h:  int32 output_dim_;
+nnet-simple-component.h:  ClipGradientComponent(): dim_(0), clipping_threshold_(-1),
+nnet-simple-component.h:  virtual int32 InputDim() const { return dim_; }
+nnet-simple-component.h:  virtual int32 OutputDim() const { return dim_; }
+nnet-simple-component.h:    return new ClipGradientComponent(dim_,
+nnet-simple-component.h:  int32 dim_;  // input/output dimension
+nnet-simple-component.h:   virtual int32 InputDim() const { return dim_; }
+nnet-simple-component.h:   virtual int32 OutputDim() const { return dim_; }
+nnet-simple-component.h:  int32 dim_;
+nnet-simple-component.h:  virtual int32 InputDim() const { return dim_; }
+nnet-simple-component.h:  virtual int32 OutputDim() const { return dim_; }
+nnet-simple-component.h:        (dim_ != offsets_.Dim() ? kOutputContiguous : 0);
+nnet-simple-component.h:  // dim_ will normally be the same as offsets_ dim, but in general will be an
+nnet-simple-component.h:  int32 dim_;
+nnet-simple-component.h:  virtual int32 InputDim() const { return input_dim_; }
+nnet-simple-component.h:  int32 input_dim_;
+nnet-simple-component.h:  virtual int32 InputDim() const { return dim_; }
+nnet-simple-component.h:  virtual int32 OutputDim() const { return dim_; }
+nnet-simple-component.h:        (dim_ != scales_.Dim() ?
+nnet-simple-component.h:  // Note: dim_ is the dimension that the component takes as input
+nnet-simple-component.h:  int32 dim_;
+nnet-component-itf.cc:  KALDI_ASSERT(out_value.NumCols() == dim_);
+nnet-component-itf.cc:  if (value_sum_.Dim() != dim_ ||
+nnet-component-itf.cc:      (deriv != NULL && deriv_sum_.Dim() != dim_)) {
+nnet-component-itf.cc:    if (value_sum_.Dim() != dim_) {
+nnet-component-itf.cc:      value_sum_.Resize(dim_);
+nnet-component-itf.cc:    if (deriv != NULL && deriv_sum_.Dim() != dim_) {
+nnet-component-itf.cc:      deriv_sum_.Resize(dim_);
+nnet-component-itf.cc:  CuVector<BaseFloat> temp(dim_);
+nnet-component-itf.cc:  KALDI_ASSERT(out_deriv.NumCols() == dim_);
+nnet-component-itf.cc:  if (oderiv_sumsq_.Dim() != dim_) {
+nnet-component-itf.cc:    oderiv_sumsq_.Resize(dim_);
+nnet-component-itf.cc:  CuVector<BaseFloat> temp(dim_);
+nnet-component-itf.cc:  stream << Type() << ", dim=" << dim_;
+nnet-component-itf.cc:  if (block_dim_ != dim_)
+nnet-component-itf.cc:    stream << ", block-dim=" << block_dim_;
+nnet-component-itf.cc:  if (count_ > 0 && value_sum_.Dim() == dim_) {
+nnet-component-itf.cc:    if (deriv_sum_.Dim() == dim_) {
+nnet-component-itf.cc:  if (oderiv_count_ > 0 && oderiv_sumsq_.Dim() == dim_) {
+nnet-component-itf.cc:  ReadBasicType(is, binary, &dim_); // Read dimension.
+nnet-component-itf.cc:    ReadBasicType(is, binary, &block_dim_);
+nnet-component-itf.cc:    block_dim_ = dim_;
+nnet-component-itf.cc:  WriteBasicType(os, binary, dim_);
+nnet-component-itf.cc:  if (block_dim_ != dim_) {
+nnet-component-itf.cc:    WriteBasicType(os, binary, block_dim_);
+nnet-component-itf.cc:    dim_(-1), block_dim_(-1), count_(0.0), oderiv_count_(0.0),
+nnet-component-itf.cc:    dim_(other.dim_), block_dim_(other.block_dim_),
+nnet-component-itf.cc:  bool ok = cfl->GetValue("dim", &dim_);
+nnet-component-itf.cc:  block_dim_ = dim_;
+nnet-component-itf.cc:  cfl->GetValue("block-dim", &block_dim_);
+nnet-component-itf.cc:  if (!ok || cfl->HasUnusedValues() || dim_ <= 0 ||
+nnet-component-itf.cc:      block_dim_ <= 0 || dim_ % block_dim_ != 0)
+nnet-am-decodable-simple.h:  inline int32 OutputDim() const { return output_dim_; }
+nnet-am-decodable-simple.h:  int32 output_dim_;
+Binary file attention.o matches
+Binary file nnet-utils.o matches
+nnet-am-decodable-simple.cc:    output_dim_(nnet_.OutputDim("output")),
+Binary file nnet-example-utils.o matches
+Binary file nnet-normalize-component.o matches
+Binary file nnet-convolutional-component.o matches
+Binary file nnet-analyze.o matches
+Binary file nnet-optimize.o matches
+Binary file nnet-discriminative-training.o matches
+Binary file nnet-test-utils.o matches
+Binary file nnet-component-itf.o matches
+nnet-computation-graph.h:  /// dim_range_nodes_ is used when allocating steps for nodes of type kDimRangeNode.
+nnet-computation-graph.h:  /// This is a set of (source_step, dim_range_node_index),
+nnet-computation-graph.h:  std::unordered_set<std::pair<int32, int32>, PairHasher<int32> > dim_range_nodes_;
+nnet-convolutional-component.cc:  int32 dim_in = linear_params_.NumCols() + 1,
+nnet-convolutional-component.cc:      dim_out = linear_params_.NumRows();
+nnet-convolutional-component.cc:    rank_in = std::min<int32>(80, (dim_in + 1) / 2);
+nnet-convolutional-component.cc:    rank_out = std::min<int32>(80, (dim_out + 1) / 2);
+nnet-nnet.cc:          << node.dim_offset << " dim=" << node.dim;
+nnet-nnet.cc:    int32 dim, dim_offset;
+nnet-nnet.cc:    if (!config->GetValue("dim-offset", &dim_offset))
+nnet-nnet.cc:    node.dim_offset = dim_offset;
+nnet-nnet.cc:    dim_offset(other.dim_offset) {
+nnet-nnet.cc:        if (!(node.dim > 0 && node.dim_offset >= 0 &&
+nnet-nnet.cc:              node.dim + node.dim_offset <= input_dim)) {
+nnet-nnet.cc:                    << ", dim-offset=" << node.dim_offset;
+Binary file decodable-simple-looped.o matches
+nnet-simple-component.cc:  input_dim_ = input_dim;
+nnet-simple-component.cc:  output_dim_ = output_dim;
+nnet-simple-component.cc:  KALDI_ASSERT(input_dim_ > 0 && output_dim_ > 0 &&
+nnet-simple-component.cc:               input_dim_ % output_dim_ == 0);
+nnet-simple-component.cc:  ReadBasicType(is, binary, &input_dim_);
+nnet-simple-component.cc:  ReadBasicType(is, binary, &output_dim_);
+nnet-simple-component.cc:  WriteBasicType(os, binary, input_dim_);
+nnet-simple-component.cc:  WriteBasicType(os, binary, output_dim_);
+nnet-simple-component.cc:    dim_(other.dim_),
+nnet-simple-component.cc:  dim_ = dim;
+nnet-simple-component.cc:  stream << Type() << ", dim=" << dim_
+nnet-simple-component.cc:               && in.NumCols() == dim_);
+nnet-simple-component.cc:  ReadBasicType(is, binary, &dim_);  // read dimension.
+nnet-simple-component.cc:  WriteBasicType(os, binary, dim_);
+nnet-simple-component.cc:  input_dim_ = input_dim;
+nnet-simple-component.cc:  output_dim_ = output_dim;
+nnet-simple-component.cc:  KALDI_ASSERT(input_dim_ > 0 && output_dim_ >= 0);
+nnet-simple-component.cc:  KALDI_ASSERT(input_dim_ > output_dim_);
+nnet-simple-component.cc:  KALDI_ASSERT(input_dim_ % output_dim_ == 0);
+nnet-simple-component.cc:  KALDI_ASSERT(in.NumCols() == input_dim_);
+nnet-simple-component.cc:  int32 num_inputs = input_dim_ / output_dim_;
+nnet-simple-component.cc:                                      i * output_dim_, output_dim_);
+nnet-simple-component.cc:  int32 num_inputs = input_dim_ / output_dim_;
+nnet-simple-component.cc:                                            i * output_dim_,
+nnet-simple-component.cc:                                            output_dim_);
+nnet-simple-component.cc:                                                j * output_dim_,
+nnet-simple-component.cc:                                                output_dim_);
+nnet-simple-component.cc:  ReadBasicType(is, binary, &input_dim_);
+nnet-simple-component.cc:  ReadBasicType(is, binary, &output_dim_);
+nnet-simple-component.cc:  WriteBasicType(os, binary, input_dim_);
+nnet-simple-component.cc:  WriteBasicType(os, binary, output_dim_);
+nnet-simple-component.cc:  to_update->num_dims_processed_ += dim_;
+nnet-simple-component.cc:  if (self_repair_scale_ == 0.0 || count_ == 0.0 || deriv_sum_.Dim() != dim_ ||
+nnet-simple-component.cc:  CuMatrix<BaseFloat> thresholds(1, dim_);
+nnet-simple-component.cc:  if (!cfl->GetValue("dim", &dim_) ||
+nnet-simple-component.cc:      dim_ <= 0 || cfl->HasUnusedValues()) {
+nnet-simple-component.cc:  stream << Type() << ", dim=" << dim_;
+nnet-simple-component.cc:  WriteBasicType(os, binary, dim_);
+nnet-simple-component.cc:  ReadBasicType(is, binary, &dim_);
+nnet-simple-component.cc:  ReadBasicType(is, binary, &dim_);
+nnet-simple-component.cc:  WriteBasicType(os, binary, dim_);
+nnet-simple-component.cc:  stream << Type() << ", dim=" << dim_
+nnet-simple-component.cc:  dim_ = dim;
+nnet-simple-component.cc:  to_update->num_dims_processed_ += dim_;
+nnet-simple-component.cc:  if (self_repair_scale_ == 0.0 || count_ == 0.0 || deriv_sum_.Dim() != dim_ ||
+nnet-simple-component.cc:  CuMatrix<BaseFloat> thresholds(1, dim_);
+nnet-simple-component.cc:  int32 dim = dim_, block_dim = block_dim_;
+nnet-simple-component.cc:    int32 dim_multiple = dim / block_dim;
+nnet-simple-component.cc:                                             in_deriv->NumRows() * dim_multiple,
+nnet-simple-component.cc:      block_dim_out = linear_params_.NumRows(),
+nnet-simple-component.cc:      block_dim_in = linear_params_.NumCols();
+nnet-simple-component.cc:                                     block_dim_in, block_dim_in),
+nnet-simple-component.cc:                   block_dim_out, block_dim_out);
+nnet-simple-component.cc:        block_dim_out = linear_params_.NumRows(),
+nnet-simple-component.cc:        block_dim_in = linear_params_.NumCols();
+nnet-simple-component.cc:                                             block_dim_in, block_dim_in),
+nnet-simple-component.cc:                           block_dim_out, block_dim_out);
+nnet-simple-component.cc:        block_dim_out = linear_params_.NumRows(),
+nnet-simple-component.cc:        block_dim_in = linear_params_.NumCols();
+nnet-simple-component.cc:                                             block_dim_in, block_dim_in),
+nnet-simple-component.cc:                           block_dim_out, block_dim_out);
+nnet-simple-component.cc:      block_dim_out = linear_params_.NumRows(),
+nnet-simple-component.cc:      block_dim_in = linear_params_.NumCols();
+nnet-simple-component.cc:                                           block_dim_in, block_dim_in),
+nnet-simple-component.cc:                           block_dim_out, block_dim_out);
+nnet-simple-component.cc:  CuVector<BaseFloat> bias_deriv(block_dim_out);
+nnet-simple-component.cc:  CuMatrix<BaseFloat> deriv(block_dim_out,
+nnet-simple-component.cc:                            block_dim_in + 1);
+nnet-simple-component.cc:  deriv.ColRange(0, block_dim_in).AddMatMat(
+nnet-simple-component.cc:  deriv.CopyColFromVec(bias_deriv, block_dim_in);
+nnet-simple-component.cc:                        deriv.ColRange(0, block_dim_in));
+nnet-simple-component.cc:  bias_deriv.CopyColFromMat(deriv, block_dim_in);
+nnet-simple-component.cc:    dim_(component.dim_) { }
+nnet-simple-component.cc:  KALDI_LOG << "****************** Initializing dim_ to " << dim;
+nnet-simple-component.cc:    if (cfl->GetValue("dim", &dim_))
+nnet-simple-component.cc:      KALDI_ASSERT(dim_ == InputDim() &&
+nnet-simple-component.cc:    if(!cfl->GetValue("dim", &dim_))
+nnet-simple-component.cc:    Init(dim_, param_mean, param_stddev);
+nnet-simple-component.cc:  KALDI_LOG << "dim_ dimension in propagate 1= " << dim_;
+nnet-simple-component.cc:  CuVector<BaseFloat> scalesmod(dim_, kSetZero);
+nnet-simple-component.cc:  KALDI_LOG << "dim_ dimension in propagate 2= " << dim_;
+nnet-simple-component.cc:  CuVector<BaseFloat> change_scales_(dim_, kSetZero);
+nnet-simple-component.cc:  scales_.Add(change_scales_.Sum()/dim_);
+nnet-simple-component.cc:    dim_(component.dim_),
+nnet-simple-component.cc:    dim_ = offsets_.Dim();  // if dim is not supplied, it defaults to this.
+nnet-simple-component.cc:    cfl->GetValue("dim", &dim_);
+nnet-simple-component.cc:    if (dim_ <= 0 || offsets_.Dim() % dim_ != 0)
+nnet-simple-component.cc:      KALDI_ERR << "Invalid dimension dim=" << dim_;
+nnet-simple-component.cc:    if(!cfl->GetValue("dim", &dim_))
+nnet-simple-component.cc:    if (dim_ <= 0)
+nnet-simple-component.cc:      KALDI_ERR << "Invalid dimension dim=" << dim_;
+nnet-simple-component.cc:    int32 block_dim = dim_;
+nnet-simple-component.cc:    if (block_dim <= 0 || dim_ % block_dim !=  0)
+nnet-simple-component.cc:  if (dim_ == offsets_.Dim()) {
+nnet-simple-component.cc:    int32 block_dim = offsets_.Dim(), multiple = dim_ / block_dim,
+nnet-simple-component.cc:    // to dim_ being a multiple >1 of offset_.Dim().
+nnet-simple-component.cc:    int32 block_dim = offsets_.Dim(), multiple = dim_ / block_dim,
+nnet-simple-component.cc:    ReadBasicType(is, binary, &dim_);
+nnet-simple-component.cc:    dim_ = offsets_.Dim();
+nnet-simple-component.cc:  WriteBasicType(os, binary, dim_);
+nnet-simple-component.cc:  if (dim_ != scales_.Dim())
+nnet-simple-component.cc:  if (!cfl->GetValue("dim", &dim_) || dim_ <= 0) {
+nnet-simple-component.cc:  int32 block_dim = dim_,
+nnet-simple-component.cc:  if (block_dim <= 0 || dim_ % block_dim != 0) {
+nnet-simple-component.cc:  ReadBasicType(is, binary, &dim_);
+nnet-simple-component.cc:  WriteBasicType(os, binary, dim_);
+nnet-simple-component.cc:    dim_(component.dim_),
+nnet-simple-component.cc:  if (dim_ == scales_.Dim()) {
+nnet-simple-component.cc:    int32 multiple = dim_ / scales_.Dim(),
+nnet-simple-component.cc:  if (dim_ == scales_.Dim()) {
+nnet-simple-component.cc:    int32 multiple = dim_ / scales_.Dim(),
+nnet-simple-component.cc:    UpdatableComponent(), input_dim_(-1), is_updatable_(true),
+nnet-simple-component.cc:    UpdatableComponent(other), input_dim_(other.input_dim_),
+nnet-simple-component.cc:    ReadBasicType(is, binary, &input_dim_);
+nnet-simple-component.cc:  WriteBasicType(os, binary, input_dim_);
+nnet-simple-component.cc:      cfl->GetValue("input-dim", &input_dim_);
+nnet-simple-component.cc:  if (!ok || cfl->HasUnusedValues() || input_dim_ <= 0 ||
+nnet-simple-component.cc:  this->input_dim_ = cur_index;
+nnet-simple-component.cc:  this->output_dim_ = sizes.size();
+nnet-simple-component.cc:  this->input_dim_ = input_dim;
+nnet-simple-component.cc:  this->output_dim_ = num_groups;
+nnet-simple-component.cc:  ans->input_dim_ = input_dim_;
+nnet-simple-component.cc:  ans->output_dim_ = output_dim_;
+nnet-simple-component.cc:    input_dim_(other.input_dim_), output_dim_(other.output_dim_),
+nnet-simple-component.cc:  bool ok = cfl->GetValue("input-dim", &input_dim_) &&
+nnet-simple-component.cc:      cfl->GetValue("output-dim", &output_dim_);
+nnet-simple-component.cc:  if (input_dim_ <= 0 || input_dim_ % output_dim_ != 0)
+nnet-simple-component.cc:    KALDI_ERR << "Invalid values input-dim=" << input_dim_
+nnet-simple-component.cc:              << " output-dim=" << output_dim_;
+nnet-simple-component.cc:  ReadBasicType(is, binary, &input_dim_);
+nnet-simple-component.cc:  ReadBasicType(is, binary, &output_dim_);
+nnet-simple-component.cc:  WriteBasicType(os, binary, input_dim_);
+nnet-simple-component.cc:  WriteBasicType(os, binary, output_dim_);
+nnet-simple-component.cc:  stream << Type() << ", input-dim=" << input_dim_
+nnet-simple-component.cc:         << ", output-dim=" << output_dim_
+nnet-simple-component.cc:               out->NumCols() == output_dim_ &&
+nnet-simple-component.cc:               in.NumCols() == input_dim_);
+Binary file nnet-optimize-utils.o matches
+nnet-batch-compute.cc:  input_dim_ = nnet.InputDim("input");
+nnet-batch-compute.cc:  ivector_dim_ = std::max<int32>(0, nnet.InputDim("ivector"));
+nnet-batch-compute.cc:  output_dim_ = nnet.OutputDim("output");
+nnet-batch-compute.cc:  KALDI_ASSERT(input_dim_ > 0 && output_dim_ > 0);
+nnet-batch-compute.cc:    if (input.NumCols() != input_dim_) {
+nnet-batch-compute.cc:          << input_dim_ << ", got " << input.NumCols();
+nnet-batch-compute.cc:    if (ivector_dim_ != 0 && ivector_dim == 0)
+nnet-batch-compute.cc:    else if (ivector_dim_ == 0 && ivector_dim != 0)
+nnet-batch-compute.cc:    else if (ivector_dim != ivector_dim_)
+nnet-batch-compute.cc:                << ivector_dim_ << ", you supplied " << ivector_dim;
+Binary file convolution.o matches
+nnet-normalize-component.cc:    input_dim_(other.input_dim_), block_dim_(other.block_dim_),
+nnet-normalize-component.cc:  input_dim_ = 0;
+nnet-normalize-component.cc:  bool ok = cfl->GetValue("dim", &input_dim_) ||
+nnet-normalize-component.cc:      cfl->GetValue("input-dim", &input_dim_);
+nnet-normalize-component.cc:  block_dim_ = input_dim_;
+nnet-normalize-component.cc:  cfl->GetValue("block-dim", &block_dim_);
+nnet-normalize-component.cc:  if (!ok || cfl->HasUnusedValues() || input_dim_ <= 0 || target_rms_ <= 0.0 ||
+nnet-normalize-component.cc:      block_dim_ <= 0 || input_dim_ % block_dim_ != 0)
+nnet-normalize-component.cc:  ReadBasicType(is, binary, &input_dim_); // Read dimension.
+nnet-normalize-component.cc:    ReadBasicType(is, binary, &block_dim_);
+nnet-normalize-component.cc:    block_dim_ = input_dim_;
+nnet-normalize-component.cc:  WriteBasicType(os, binary, input_dim_);
+nnet-normalize-component.cc:  if (block_dim_ != input_dim_) {
+nnet-normalize-component.cc:    WriteBasicType(os, binary, block_dim_);
+nnet-normalize-component.cc:  if (block_dim_ != input_dim_)
+nnet-normalize-component.cc:    stream << ", block-dim=" << block_dim_;
+nnet-normalize-component.cc:  if (block_dim_ != input_dim_) {
+nnet-normalize-component.cc:    int32 num_blocks = input_dim_ / block_dim_,
+nnet-normalize-component.cc:        output_block_dim = block_dim_ + (add_log_stddev_ ? 1 : 0);
+nnet-normalize-component.cc:                                       block_dim_, block_dim_),
+nnet-normalize-component.cc:  if (block_dim_ != input_dim_) {
+nnet-normalize-component.cc:    int32 num_blocks = input_dim_ / block_dim_,
+nnet-normalize-component.cc:        output_block_dim = block_dim_ + (add_log_stddev_ ? 1 : 0);
+nnet-normalize-component.cc:                                             block_dim_, block_dim_),
+nnet-normalize-component.cc:                          block_dim_, block_dim_);
+nnet-normalize-component.cc:  offset_.Resize(block_dim_);
+nnet-normalize-component.cc:  scale_.Resize(block_dim_);
+nnet-normalize-component.cc:  KALDI_ASSERT(dim_ > 0 && block_dim_ > 0 && dim_ % block_dim_ == 0 &&
+nnet-normalize-component.cc:    dim_(other.dim_), block_dim_(other.block_dim_),
+nnet-normalize-component.cc:  stream << Type() << ", dim=" << dim_ << ", block-dim=" << block_dim_
+nnet-normalize-component.cc:  dim_ = -1;
+nnet-normalize-component.cc:  block_dim_ = -1;
+nnet-normalize-component.cc:  bool ok = cfl->GetValue("dim", &dim_);
+nnet-normalize-component.cc:  cfl->GetValue("block-dim", &block_dim_);
+nnet-normalize-component.cc:  if (!ok || dim_ <= 0) {
+nnet-normalize-component.cc:  if (block_dim_ == -1)
+nnet-normalize-component.cc:    block_dim_ = dim_;
+nnet-normalize-component.cc:  if (!(block_dim_ > 0 && dim_ % block_dim_ == 0 &&
+nnet-normalize-component.cc:  stats_sum_.Resize(block_dim_);
+nnet-normalize-component.cc:  stats_sumsq_.Resize(block_dim_);
+nnet-normalize-component.cc:               (in.NumCols() == dim_ || in.NumCols() == block_dim_));
+nnet-normalize-component.cc:  if (in.NumCols() != block_dim_) {
+nnet-normalize-component.cc:    // if block_dim_ != dim_, we recurse; this helps keep the main code
+nnet-normalize-component.cc:    int32 ratio = dim_ / block_dim_, orig_rows = in.NumRows(),
+nnet-normalize-component.cc:  // equals block_dim_.
+nnet-normalize-component.cc:    int32 num_frames = in.NumRows(), dim = block_dim_;
+nnet-normalize-component.cc:    if (offset_.Dim() != block_dim_) {
+nnet-normalize-component.cc:               (out_value.NumCols() == dim_ ||
+nnet-normalize-component.cc:                out_value.NumCols() == block_dim_));
+nnet-normalize-component.cc:  if (out_value.NumCols() != block_dim_) {
+nnet-normalize-component.cc:    // if block_dim_ != dim_, we recurse; this helps keep the main code
+nnet-normalize-component.cc:    int32 ratio = dim_ / block_dim_,
+nnet-normalize-component.cc:    KALDI_ASSERT(offset_.Dim() == block_dim_);
+nnet-normalize-component.cc:  KALDI_ASSERT(out_value.NumCols() == dim_ || out_value.NumCols() == block_dim_);
+nnet-normalize-component.cc:  if (out_value.NumCols() != block_dim_) {
+nnet-normalize-component.cc:    // if block_dim_ != dim_, we recurse; this helps keep the main code
+nnet-normalize-component.cc:    int32 ratio = dim_ / block_dim_,
+nnet-normalize-component.cc:  KALDI_ASSERT(mean.Dim() == block_dim_ && memo->num_frames > 0);
+nnet-normalize-component.cc:  if (stats_sum_.Dim() != block_dim_) {
+nnet-normalize-component.cc:    stats_sum_.Resize(block_dim_);
+nnet-normalize-component.cc:    stats_sumsq_.Resize(block_dim_);
+nnet-normalize-component.cc:  ReadBasicType(is, binary, &dim_);
+nnet-normalize-component.cc:  ReadBasicType(is, binary, &block_dim_);
+nnet-normalize-component.cc:  WriteBasicType(os, binary, dim_);
+nnet-normalize-component.cc:  WriteBasicType(os, binary, block_dim_);
+nnet-general-component.h:  DistributeComponent(): input_dim_(0), output_dim_(0) { }
+nnet-general-component.h:  virtual int32 InputDim() const { return input_dim_; }
+nnet-general-component.h:  virtual int32 OutputDim() const { return output_dim_; }
+nnet-general-component.h:    return new DistributeComponent(input_dim_, output_dim_);
+nnet-general-component.h:  int32 input_dim_;
+nnet-general-component.h:  int32 output_dim_;
+nnet-general-component.h:  // each pair is a pair (row, dim_offset), and by
+nnet-general-component.h:  // computing (input.Data() + row * input.Stride() + dim_offset)
+nnet-general-component.h:  virtual int32 InputDim() const { return input_dim_; }
+nnet-general-component.h:    return 1 + input_dim_ + (include_variance_ ? input_dim_ : 0);
+nnet-general-component.h:  int32 input_dim_;
+nnet-general-component.h:  virtual int32 InputDim() const { return input_dim_; }
+nnet-general-component.h:    return input_dim_ + num_log_count_features_ - 1;
+nnet-general-component.h:  int32 input_dim_;
+nnet-general-component.h:  BackpropTruncationComponent(): dim_(0), scale_(1.0), clipping_threshold_(-1),
+nnet-general-component.h:  virtual int32 InputDim() const { return dim_; }
+nnet-general-component.h:  virtual int32 OutputDim() const { return dim_; }
+nnet-general-component.h:  int32 dim_;
+nnet-general-component.h:  virtual int32 InputDim() const { return output_dim_; }
+nnet-general-component.h:  virtual int32 OutputDim() const { return output_dim_; }
+nnet-general-component.h:  int32 output_dim_;
+nnet-general-component.h:  virtual int32 InputDim() const { return dim_; }
+nnet-general-component.h:  virtual int32 OutputDim() const { return dim_; }
+nnet-general-component.h:        (block_dim_ != dim_ ? (kInputContiguous|kOutputContiguous) : 0);
+nnet-general-component.h:  // Returns a random matrix of dimension 'num_mask_rows' by 'block_dim_'.  This
+nnet-general-component.h:  int32 dim_;
+nnet-general-component.h:  // block_dim_ must divide dim_.
+nnet-general-component.h:  int32 block_dim_;
+nnet-general-component.h:  // it's num-cols is the block_dim_ of the component.
+nnet-general-component.h:  // Propagate() or Backprop() on) times the (dim_ / block_dim_) of the
+nnet-general-component.h:  // and each value is repeated (dim_ / block_dim_) times.  This array is used
+Binary file nnet-general-component.o matches
+nnet-component-itf.h:  virtual int32 InputDim() const { return dim_; }
+nnet-component-itf.h:  virtual int32 OutputDim() const { return dim_; }
+nnet-component-itf.h:  // dim_ is the input dimension (and almost always the output dimension) of the
+nnet-component-itf.h:  int32 dim_;
+nnet-component-itf.h:  // block_dim_ will normally be the same as dim_, but it may be any nonzero
+nnet-component-itf.h:  // divisor of dim_; if so, each vector is treated as a number of blocks
+nnet-component-itf.h:  int32 block_dim_;
+Binary file nnet-discriminative-diagnostics.o matches
+nnet-diagnostics.h:  bool compute_per_dim_accuracy;
+nnet-diagnostics.h:      compute_per_dim_accuracy(false) { }
+nnet-diagnostics.h:    opts->Register("compute-per-dim-accuracy", &compute_per_dim_accuracy,
+Binary file nnet-diagnostics.o matches
+nnet-descriptor.h:  virtual int32 Dim(const Nnet &nnet) const { return dim_; }
+nnet-descriptor.h:  int32 dim_;
+Binary file nnet-training.o matches
+Binary file nnet-chain-training.o matches
+Binary file natural-gradient-online.o matches
+Binary file discriminative-training.o matches
+nnet-descriptor.cc:  os << "Const(" << value_ << ", " << dim_ << ')';
+nnet-descriptor.cc:  return new ConstantSumDescriptor(value_, dim_);
+nnet-descriptor.cc:    value_(value), dim_(dim) {
+Binary file nnet-chain-diagnostics.o matches
+Binary file kaldi-nnet3.a matches
+Binary file nnet-descriptor.o matches
+Binary file am-nnet-simple.o matches
+Binary file nnet-compute.o matches
+Binary file nnet-nnet.o matches
